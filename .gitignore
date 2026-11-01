@@ -1,0 +1,14 @@
+# dependencies and build output
+node_modules/
+dist/
+
+# secrets: never commit a real .env (only .env.example files)
+.env
+.env.*
+!.env.example
+
+# logs and OS files
+*.log
+npm-debug.log*
+.DS_Store
+Thumbs.db

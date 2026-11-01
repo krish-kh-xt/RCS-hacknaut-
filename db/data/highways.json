@@ -1,0 +1,8 @@
+[
+  { "name": "National Highway Helpline",                       "phone": "1033", "highway_ref": "NH",     "lat": 31.2000, "lng": 76.5200 },
+  { "name": "Highway Help Point Ropar bypass (sample)",        "phone": "1033", "highway_ref": "NH-205", "lat": 30.9900, "lng": 76.5400 },
+  { "name": "Toll Plaza Help Point Anandpur Sahib (sample)",   "phone": "1033", "highway_ref": "NH-205", "lat": 31.2200, "lng": 76.5050 },
+  { "name": "Highway Police Post Kiratpur (sample)",           "phone": "112",  "highway_ref": "NH-205", "lat": 31.1900, "lng": 76.5600 },
+  { "name": "Highway Help Point Bilaspur road (sample)",       "phone": "1033", "highway_ref": "NH-205", "lat": 31.2900, "lng": 76.7300 },
+  { "name": "State Highway Help Point Nangal (sample)",        "phone": "1033", "highway_ref": "SH-22",  "lat": 31.3700, "lng": 76.3900 }
+]

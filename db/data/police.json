@@ -1,0 +1,8 @@
+[
+  { "name": "Police Station Ropar (sample)",            "phone": "112", "lat": 30.9700, "lng": 76.5250 },
+  { "name": "Police Station Nangal (sample)",           "phone": "112", "lat": 31.3850, "lng": 76.3800 },
+  { "name": "Police Station Anandpur Sahib (sample)",   "phone": "112", "lat": 31.2350, "lng": 76.4980 },
+  { "name": "Police Post Kiratpur Sahib (sample)",      "phone": "112", "lat": 31.1850, "lng": 76.5650 },
+  { "name": "Police Station Bilaspur (sample)",         "phone": "112", "lat": 31.3350, "lng": 76.7550 },
+  { "name": "Police Post Swarghat (sample)",            "phone": "112", "lat": 31.2050, "lng": 76.7050 }
+]

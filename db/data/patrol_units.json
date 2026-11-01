@@ -1,0 +1,7 @@
+[
+  { "name": "Patrol Unit 1, Ropar",           "phone": "+910000000001", "lat": 30.9800, "lng": 76.5350 },
+  { "name": "Patrol Unit 2, Anandpur Sahib",  "phone": "+910000000002", "lat": 31.2300, "lng": 76.5000 },
+  { "name": "Patrol Unit 3, Kiratpur",        "phone": "+910000000003", "lat": 31.1850, "lng": 76.5700 },
+  { "name": "Patrol Unit 4, Swarghat",        "phone": "+910000000004", "lat": 31.2100, "lng": 76.7000 },
+  { "name": "Patrol Unit 5, Bilaspur",        "phone": "+910000000005", "lat": 31.3300, "lng": 76.7500 }
+]
