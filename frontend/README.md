@@ -49,3 +49,18 @@ npm run dev
 ## Demo panel (Role E)
 
 Add `src/screens/DemoPanel.jsx` (props: `user`, `onClose`). It is picked up automatically and opens by tapping the logo 5 times. Use `setSimulatedOffline(bool)` from `services/index.js` for "Simulate no internet".
+
+## Part 3: new UI (dark navy design)
+
+Screens now follow the shared design: Home (status pill, hold-to-send SOS, Nearest Help grid, Works Offline banner), Maps (search, filter chips, dark map), Nearest Help list, and the admin dashboard.
+
+- `src/components/` Icon, Logo, StatusBadge, SosButton (hold 3 s), BottomNav, PlaceCard, MapView
+- `src/screens/Home.jsx`, `MapScreen.jsx`, `NearestHelp.jsx`, `Onboarding.jsx`
+- `src/screens/dashboard/` `Dashboard.jsx` (`#/dashboard` and `#/dashboard/alerts`) and `useDashboardData.js` (reads `GET /alerts` and `GET /patrol-units`, falls back to sample data)
+- `src/utils/format.js` display helpers
+- Routes: `#/`, `#/help`, `#/map`, `#/demo`, `#/dashboard`, `#/dashboard/alerts`
+
+### UI update 2
+- Font: Poppins, bundled with `@fontsource/poppins` (run `npm install`; it works offline because the font files are cached by the service worker).
+- SOS: hold 2 seconds; the button turns green ("SENT", or "SAVED" if offline) for 10 seconds, then goes back to red.
+- Trip: Home shows a gold Start Trip button. After tapping it the screen shows "Trip Active", the SOS button and an End Trip button.

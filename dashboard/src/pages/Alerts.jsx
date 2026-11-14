@@ -1,72 +1,118 @@
-import { useCallback, useEffect, useState } from 'react';
-import AlertMap from '../components/AlertMap.jsx';
-import AlertList from '../components/AlertList.jsx';
-import { getAlerts, getPatrolUnits } from '../services/api.js';
+import { useMemo, useState } from 'react';
+import { ChevronDown, CalendarIcon, SortIcon } from '../components/Icons.jsx';
+import ResolveButton from '../components/ResolveButton.jsx';
+import { clockTime, dateKey, formatLatLng, typeLabel } from '../services/format.js';
 
-const POLL_MS = 10000; // refresh every 10 seconds
+function Thumb({ type }) {
+  return (
+    <div className="thumb">
+      <span className={`pin-mini ${type === 'silence' ? 'yellow' : 'red'}`}>!</span>
+    </div>
+  );
+}
 
-export default function Alerts() {
-  const [alerts, setAlerts] = useState([]);
-  const [units, setUnits] = useState([]);
-  const [selectedId, setSelectedId] = useState(null);
-  const [online, setOnline] = useState(true);
-  const [loaded, setLoaded] = useState(false);
+export default function Alerts({ data }) {
+  const { openAlerts, resolvedAlerts, refresh } = data;
+  const [type, setType] = useState('');
+  const [date, setDate] = useState('');
+  const [status, setStatus] = useState('');
+  const [sort, setSort] = useState({ key: 'time', dir: 'desc' });
 
-  const refresh = useCallback(async () => {
-    try {
-      const [a, u] = await Promise.all([getAlerts(), getPatrolUnits()]);
-      setAlerts(a);
-      setUnits(u);
-      setOnline(true);
-    } catch {
-      setOnline(false); // keep showing the last data
-    } finally {
-      setLoaded(true);
-    }
-  }, []);
+  const rows = useMemo(() => {
+    let list = [...openAlerts, ...resolvedAlerts];
+    if (type) list = list.filter((a) => a.type === type);
+    if (status) list = list.filter((a) => a.status === status);
+    if (date) list = list.filter((a) => dateKey(a.time) === date);
+    list.sort((a, b) => {
+      const av = sort.key === 'time' ? new Date(a.time || 0).getTime() : String(a[sort.key] ?? '');
+      const bv = sort.key === 'time' ? new Date(b.time || 0).getTime() : String(b[sort.key] ?? '');
+      const c = av < bv ? -1 : av > bv ? 1 : 0;
+      return sort.dir === 'asc' ? c : -c;
+    });
+    return list;
+  }, [openAlerts, resolvedAlerts, type, status, date, sort]);
 
-  useEffect(() => {
-    refresh();
-    const timer = setInterval(refresh, POLL_MS);
-    return () => clearInterval(timer);
-  }, [refresh]);
+  const toggle = (key) =>
+    setSort((s) => (s.key === key ? { key, dir: s.dir === 'asc' ? 'desc' : 'asc' } : { key, dir: 'asc' }));
 
-  const selected = alerts.find((a) => a.id === selectedId) || null;
+  const Th = ({ k, children }) => (
+    <th onClick={() => toggle(k)} className="sortable">
+      {children} <SortIcon />
+    </th>
+  );
 
   return (
-    <div className="page">
-      <header className="topbar">
-        <h1>RCS Patrol control room</h1>
-        <div className="legend" aria-label="Map legend">
-          <span><i className="dot dot-alert" /> Traveller needing a check</span>
-          <span><i className="dot dot-unit" /> Patrol unit</span>
-        </div>
-        <div className={`status ${online ? 'status-ok' : 'status-down'}`} role="status">
-          {online ? `Live: ${alerts.length} open ${alerts.length === 1 ? 'alert' : 'alerts'}` : 'Reconnecting'}
-        </div>
-      </header>
+    <div className="table-card">
+      <div className="filters">
+        <label className="select">
+          <select value={type} onChange={(e) => setType(e.target.value)}>
+            <option value="">Alert Type</option>
+            <option value="sos">SOS Alert</option>
+            <option value="silence">Silence Alert</option>
+          </select>
+          <ChevronDown />
+        </label>
+        <label className="select date">
+          <CalendarIcon />
+          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} aria-label="Date" />
+        </label>
+        <label className="select">
+          <select value={status} onChange={(e) => setStatus(e.target.value)}>
+            <option value="">Status</option>
+            <option value="pending">Pending</option>
+            <option value="resolved">Resolved</option>
+          </select>
+          <ChevronDown />
+        </label>
+      </div>
 
-      {!online && (
-        <div className="banner" role="alert">
-          Cannot reach the server. Showing the last data and retrying every 10 seconds.
-        </div>
-      )}
-
-      <main className="main">
-        <section className="map-wrap" aria-label="Map of alerts and patrol units">
-          <AlertMap alerts={alerts} units={units} selected={selected} onSelect={setSelectedId} />
-        </section>
-        <aside className="panel" aria-label="Open alerts">
-          <AlertList
-            alerts={alerts}
-            units={units}
-            selectedId={selectedId}
-            onSelect={setSelectedId}
-            onResolved={refresh}
-            loaded={loaded}
-          />
-        </aside>
-      </main>
+      <table className="alerts-table">
+        <thead>
+          <tr>
+            <Th k="type">Alert Type</Th>
+            <th>Location</th>
+            <Th k="time">Time</Th>
+            <Th k="status">Status</Th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {rows.length === 0 && (
+            <tr>
+              <td colSpan={5} className="muted empty">No alerts match.</td>
+            </tr>
+          )}
+          {rows.map((a) => (
+            <tr key={`${a.status}-${a.id}`}>
+              <td>
+                <span className="type-cell">
+                  <span className={`ri-icon ${a.type === 'silence' ? 'yellow' : 'red'}`}>!</span>
+                  {typeLabel(a.type)}
+                </span>
+              </td>
+              <td>
+                <div className="loc-cell">
+                  <Thumb type={a.type} />
+                  <span className="muted small">{a.address || formatLatLng(a.lat, a.lng)}</span>
+                </div>
+              </td>
+              <td>{clockTime(a.time)}</td>
+              <td>
+                <span className={`tag ${a.status === 'resolved' ? 'tag-green' : 'tag-red'}`}>
+                  {a.status === 'resolved' ? 'Resolved' : 'Pending'}
+                </span>
+              </td>
+              <td>
+                {a.status === 'resolved' ? (
+                  <button className="btn-outline" disabled>View</button>
+                ) : (
+                  <ResolveButton id={a.id} onDone={refresh} label="View/Assign" />
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

@@ -80,3 +80,9 @@ export const syncApi = ({ userId, lat, lng, battery, timestamp }) =>
   request('POST', '/sync', { userId, lat, lng, battery, timestamp });
 
 export const sosApi = ({ userId, lat, lng }) => request('POST', '/sos', { userId, lat, lng });
+
+/* ---------- demo endpoints (backend must run with DEMO_MODE=true) ---------- */
+
+export const demoSilenceApi = (userId) => request('POST', `/demo/silence/${userId}`);
+export const demoReplyApi = (userId) => request('POST', `/demo/reply/${userId}`);
+export const demoResetApi = () => request('POST', '/demo/reset');

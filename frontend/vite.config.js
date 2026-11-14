@@ -22,7 +22,7 @@ export default defineConfig({
       // linked from index.html. Do not generate a second one here.
       manifest: false,
       workbox: {
-        globPatterns: ['**/*.{js,css,html,svg,png,ico,webmanifest}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,jpg,jpeg,webp,ico,webmanifest,woff,woff2}'],
         navigateFallback: '/index.html',
         navigateFallbackDenylist: [
           /^\/sync/,

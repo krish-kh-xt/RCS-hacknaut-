@@ -1,6 +1,14 @@
 // Single entry point used by the screens (Part 2).
 // Screens import ONLY from here; they never touch storage, sync or api files.
-import { createUser, startTripApi, endTripApi } from './api.js';
+import {
+  createUser,
+  startTripApi,
+  endTripApi,
+  demoSilenceApi,
+  demoReplyApi,
+  demoResetApi,
+  isForcedOffline,
+} from './api.js';
 import {
   saveUser,
   getStoredUser,
@@ -17,11 +25,35 @@ import {
   syncNow,
   restoreStatus,
 } from './syncService.js';
-import { triggerSos, startSosRetry, getPendingSosCount } from './sosQueue.js';
+import {
+  triggerSos,
+  startSosRetry,
+  getPendingSosCount,
+  getRejectedSosCount,
+  subscribeSosQueue,
+  clearRejectedSos,
+} from './sosQueue.js';
 import { getBestPosition } from '../utils/geolocation.js';
 import { distanceKm } from '../utils/haversine.js';
 
-export { subscribeStatus, getStatus, setSimulatedOffline, triggerSos, getPendingSosCount, syncNow };
+export {
+  subscribeStatus,
+  getStatus,
+  setSimulatedOffline,
+  triggerSos,
+  getPendingSosCount,
+  getRejectedSosCount,
+  subscribeSosQueue,
+  clearRejectedSos,
+  syncNow,
+};
+
+/* ---------- demo panel helpers (backend needs DEMO_MODE=true) ---------- */
+
+export const isSimulatedOffline = isForcedOffline;
+export const demoSilence = (userId) => demoSilenceApi(userId);
+export const demoReply = (userId) => demoReplyApi(userId);
+export const demoReset = () => demoResetApi();
 
 /* ---------- start-up ---------- */
 
@@ -107,6 +139,8 @@ const TYPES = ['hospital', 'police', 'highway', 'patrol'];
 // Reads GPS and the cached places, then returns the nearest of each kind.
 // {
 //   cacheEmpty, locationAvailable, position: { lat, lng } | null,
+//   positionFresh: true if GPS gave a new fix, false if the LAST KNOWN position was used,
+//   positionAt: ISO time of that last known position (only when positionFresh is false),
 //   hospital: Place[], police: Place[], highway: Place[], patrol: Place[]
 // }
 // Place = { id, type, name, phone, highwayRef, lat, lng, distanceKm }
@@ -120,6 +154,8 @@ export async function getNearestHelp({ limitPerType = 3 } = {}) {
     cacheEmpty: places.length === 0,
     locationAvailable: Boolean(position),
     position: position ? { lat: position.lat, lng: position.lng } : null,
+    positionFresh: position ? position.fresh : false,
+    positionAt: position && !position.fresh ? position.at || null : null,
     hospital: [],
     police: [],
     highway: [],

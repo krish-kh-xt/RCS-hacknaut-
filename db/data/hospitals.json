@@ -1,8 +1,1094 @@
 [
-  { "name": "Civil Hospital Ropar (sample)",            "phone": "108", "lat": 30.9650, "lng": 76.5330 },
-  { "name": "Civil Hospital Nangal (sample)",           "phone": "108", "lat": 31.3900, "lng": 76.3750 },
-  { "name": "Civil Hospital Anandpur Sahib (sample)",   "phone": "108", "lat": 31.2390, "lng": 76.5010 },
-  { "name": "CHC Kiratpur Sahib (sample)",              "phone": "108", "lat": 31.1800, "lng": 76.5700 },
-  { "name": "Regional Hospital Bilaspur (sample)",      "phone": "108", "lat": 31.3300, "lng": 76.7600 },
-  { "name": "Rural Health Centre Swarghat (sample)",    "phone": "108", "lat": 31.2000, "lng": 76.7100 }
+ {
+  "name": "PGI Emergency",
+  "phone": "108",
+  "lat": 30.761101,
+  "lng": 76.776221
+ },
+ {
+  "name": "KD Cosmetic Surgery Centre,Sector 34-A",
+  "phone": "108",
+  "lat": 30.724524,
+  "lng": 76.768988
+ },
+ {
+  "name": "PGI Chandigarh",
+  "phone": "108",
+  "lat": 30.761431,
+  "lng": 76.774965
+ },
+ {
+  "name": "Dispesary",
+  "phone": "108",
+  "lat": 30.67759,
+  "lng": 76.798432
+ },
+ {
+  "name": "Santokh Hospital",
+  "phone": "+918558866846",
+  "lat": 30.747863,
+  "lng": 76.748988
+ },
+ {
+  "name": "Hospital",
+  "phone": "108",
+  "lat": 30.686066,
+  "lng": 76.665027
+ },
+ {
+  "name": "Dharam Hospital",
+  "phone": "108",
+  "lat": 30.749174,
+  "lng": 76.774026
+ },
+ {
+  "name": "Max health care",
+  "phone": "108",
+  "lat": 30.738771,
+  "lng": 76.714558
+ },
+ {
+  "name": "Bharat Vikas Parishad Charitable Medical Centre",
+  "phone": "108",
+  "lat": 30.747535,
+  "lng": 76.765978
+ },
+ {
+  "name": "Land Mark Hospital(Langol View Charitable Clinic and Maternity Home)",
+  "phone": "108",
+  "lat": 30.712272,
+  "lng": 76.770275
+ },
+ {
+  "name": "Advance Eye Center",
+  "phone": "108",
+  "lat": 30.76395,
+  "lng": 76.780052
+ },
+ {
+  "name": "bodysculpt",
+  "phone": "+91 9878650039",
+  "lat": 30.703468,
+  "lng": 76.710082
+ },
+ {
+  "name": "Government Pet Hospital",
+  "phone": "108",
+  "lat": 30.73297,
+  "lng": 76.771474
+ },
+ {
+  "name": "Ivy Health and Life Sciences Private Limited",
+  "phone": "01727170121",
+  "lat": 30.706747,
+  "lng": 76.70832
+ },
+ {
+  "name": "Rameshwara Hospital",
+  "phone": "108",
+  "lat": 30.758307,
+  "lng": 76.784318
+ },
+ {
+  "name": "Oxford Heart and Multispeciality Hospital",
+  "phone": "108",
+  "lat": 30.728748,
+  "lng": 76.789855
+ },
+ {
+  "name": "Mukat Hospital and Heart Institute",
+  "phone": "108",
+  "lat": 30.722836,
+  "lng": 76.770339
+ },
+ {
+  "name": "Nins Brain and Spine Hospital",
+  "phone": "108",
+  "lat": 30.721826,
+  "lng": 76.766946
+ },
+ {
+  "name": "Ashwini Maternity Hospital",
+  "phone": "108",
+  "lat": 30.719376,
+  "lng": 76.757891
+ },
+ {
+  "name": "Inscol Tertiary Care Hospital",
+  "phone": "108",
+  "lat": 30.723938,
+  "lng": 76.765686
+ },
+ {
+  "name": "Deep Hospital",
+  "phone": "108",
+  "lat": 30.7636,
+  "lng": 76.748321
+ },
+ {
+  "name": "Civil Hospital-Sector 22",
+  "phone": "1722773711",
+  "lat": 30.732432,
+  "lng": 76.771662
+ },
+ {
+  "name": "Chaitanya Hospital",
+  "phone": "9988808880",
+  "lat": 30.710748,
+  "lng": 76.754191
+ },
+ {
+  "name": "Grewal Eye Institute",
+  "phone": "108",
+  "lat": 30.742022,
+  "lng": 76.790916
+ },
+ {
+  "name": "Civil hospital, Manimajra",
+  "phone": "1722751004",
+  "lat": 30.712853,
+  "lng": 76.842418
+ },
+ {
+  "name": "Abhilasha Hospital",
+  "phone": "108",
+  "lat": 30.727952,
+  "lng": 76.759499
+ },
+ {
+  "name": "Arya Hospital",
+  "phone": "108",
+  "lat": 30.717464,
+  "lng": 76.832989
+ },
+ {
+  "name": "Dabur Dhanwantry Hospital",
+  "phone": "108",
+  "lat": 30.69994,
+  "lng": 76.767141
+ },
+ {
+  "name": "Silver Oaks Hospitals",
+  "phone": "108",
+  "lat": 30.692086,
+  "lng": 76.733003
+ },
+ {
+  "name": "Arthoscopy and Spinal Endoscopy Centre",
+  "phone": "108",
+  "lat": 30.716308,
+  "lng": 76.777796
+ },
+ {
+  "name": "Virdi Eye Hospital(Virk Hospital)",
+  "phone": "108",
+  "lat": 30.719818,
+  "lng": 76.768628
+ },
+ {
+  "name": "Mangnum Hospital",
+  "phone": "108",
+  "lat": 30.723771,
+  "lng": 76.760497
+ },
+ {
+  "name": "Grover Eye Laser and E.N.T Hospital",
+  "phone": "108",
+  "lat": 30.730178,
+  "lng": 76.76032
+ },
+ {
+  "name": "Bedi Hospital",
+  "phone": "108",
+  "lat": 30.7177,
+  "lng": 76.769382
+ },
+ {
+  "name": "Gupta Eye Hospital, Chandigarh",
+  "phone": "108",
+  "lat": 30.67276,
+  "lng": 76.85363
+ },
+ {
+  "name": "Postgraduate Institute of Medical Education and Research (PGIMER)",
+  "phone": "0172-2755220",
+  "lat": 30.764368,
+  "lng": 76.776278
+ },
+ {
+  "name": "Neeraj Eye Hospital",
+  "phone": "108",
+  "lat": 30.734221,
+  "lng": 76.75258
+ },
+ {
+  "name": "Kapoor's Kidney and Urostone Centre Pvt.Ltd.",
+  "phone": "108",
+  "lat": 30.702963,
+  "lng": 76.762
+ },
+ {
+  "name": "Omni Hospital",
+  "phone": "108",
+  "lat": 30.721697,
+  "lng": 76.766972
+ },
+ {
+  "name": "Tricity Hospital Pvt. Ltd.",
+  "phone": "108",
+  "lat": 30.710446,
+  "lng": 76.842968
+ },
+ {
+  "name": "Shri Ram Hospital",
+  "phone": "108",
+  "lat": 30.689099,
+  "lng": 76.853355
+ },
+ {
+  "name": "Institute Of Reproduction and Child Cares",
+  "phone": "108",
+  "lat": 30.69874,
+  "lng": 76.835774
+ },
+ {
+  "name": "Singla Orthopaedic Centre / Ortho Nava Hospital",
+  "phone": "108",
+  "lat": 30.70199,
+  "lng": 76.839433
+ },
+ {
+  "name": "Raffels Hospital",
+  "phone": "0172-258730003",
+  "lat": 30.681546,
+  "lng": 76.848598
+ },
+ {
+  "name": "Gokul Surgical Hospital",
+  "phone": "108",
+  "lat": 30.682106,
+  "lng": 76.837479
+ },
+ {
+  "name": "Orthomax Bone and Joint Hospital",
+  "phone": "108",
+  "lat": 30.685556,
+  "lng": 76.840692
+ },
+ {
+  "name": "Chakravarty Polyclinics",
+  "phone": "108",
+  "lat": 30.688542,
+  "lng": 76.850379
+ },
+ {
+  "name": "Drishti Eye Hospital",
+  "phone": "108",
+  "lat": 30.688219,
+  "lng": 76.850033
+ },
+ {
+  "name": "Aarogya Hospital, Panchkula",
+  "phone": "108",
+  "lat": 30.674763,
+  "lng": 76.851386
+ },
+ {
+  "name": "Phoenix Hospital, Panchkula",
+  "phone": "108",
+  "lat": 30.695839,
+  "lng": 76.838175
+ },
+ {
+  "name": "Happy Family Maternitys Children Hospital Pvt Ltd",
+  "phone": "108",
+  "lat": 30.715826,
+  "lng": 76.838934
+ },
+ {
+  "name": "Grecian Hospital",
+  "phone": "062837 05192",
+  "lat": 30.691353,
+  "lng": 76.72344
+ },
+ {
+  "name": "Shivalik Hospital and ACE Heart & Vascular Institute",
+  "phone": "0172 221 6868",
+  "lat": 30.694945,
+  "lng": 76.721416
+ },
+ {
+  "name": "Kaushal Hospital, Chandigarh",
+  "phone": "108",
+  "lat": 30.722908,
+  "lng": 76.744779
+ },
+ {
+  "name": "JP Hospital, Zirakpur",
+  "phone": "84277 76095",
+  "lat": 30.661355,
+  "lng": 76.818445
+ },
+ {
+  "name": "Amar Hospital, Rupnagar",
+  "phone": "108",
+  "lat": 30.696302,
+  "lng": 76.716644
+ },
+ {
+  "name": "Sri Guru Harkrishan Sahib (C) Eye Institute And Super Speciality Hospital",
+  "phone": "+91 8725001324",
+  "lat": 30.692894,
+  "lng": 76.699076
+ },
+ {
+  "name": "Indus Hospital,S.A.S Nagar",
+  "phone": "01762 512 666",
+  "lat": 30.708959,
+  "lng": 76.722468
+ },
+ {
+  "name": "Chawla Nursing Home",
+  "phone": "098145 01415",
+  "lat": 30.70834,
+  "lng": 76.724084
+ },
+ {
+  "name": "Kaushal Hospital, Mohali",
+  "phone": "099145 11175",
+  "lat": 30.744272,
+  "lng": 76.651123
+ },
+ {
+  "name": "J P Eye Hospital, Rupnagar",
+  "phone": "099148 74442",
+  "lat": 30.706867,
+  "lng": 76.726213
+ },
+ {
+  "name": "Max Super Speciality Hospital-Mohali",
+  "phone": "0172 521 2000",
+  "lat": 30.739959,
+  "lng": 76.714187
+ },
+ {
+  "name": "Ujjawal Eye Care",
+  "phone": "01762 509 993",
+  "lat": 30.660289,
+  "lng": 76.81891
+ },
+ {
+  "name": "Adityaj Hospital And Laboratory",
+  "phone": "108",
+  "lat": 30.72818,
+  "lng": 76.722281
+ },
+ {
+  "name": "Singla Medicare Clinic",
+  "phone": "085560 82078",
+  "lat": 30.726834,
+  "lng": 76.720965
+ },
+ {
+  "name": "Chaitanya Public Hospital",
+  "phone": "01762 509 503",
+  "lat": 30.660936,
+  "lng": 76.82905
+ },
+ {
+  "name": "Behgal Multispecialty Hospital",
+  "phone": "098141 09573",
+  "lat": 30.701834,
+  "lng": 76.682568
+ },
+ {
+  "name": "Liberty Hospital",
+  "phone": "0172 227 3402",
+  "lat": 30.711314,
+  "lng": 76.719109
+ },
+ {
+  "name": "Indus Super Speciality Hospital",
+  "phone": "0172 522 2000",
+  "lat": 30.729257,
+  "lng": 76.722148
+ },
+ {
+  "name": "Dr. Sodhi's Health Care, Multispeciality Hospital- Mohali",
+  "phone": "108",
+  "lat": 30.712996,
+  "lng": 76.718298
+ },
+ {
+  "name": "Police Hospital",
+  "phone": "108",
+  "lat": 30.723238,
+  "lng": 76.812297
+ },
+ {
+  "name": "ESIC Hospital Ramdarbar",
+  "phone": "108",
+  "lat": 30.696743,
+  "lng": 76.787964
+ },
+ {
+  "name": "Composite Hospital I.T.B.P",
+  "phone": "1722655752",
+  "lat": 30.677988,
+  "lng": 76.807281
+ },
+ {
+  "name": "Civil Hospital SAS Nagar (Mohali)",
+  "phone": "0172-2271295",
+  "lat": 30.739313,
+  "lng": 76.713873
+ },
+ {
+  "name": "Civil Hospital Chando Gobindgarh",
+  "phone": "108",
+  "lat": 30.77575,
+  "lng": 76.665423
+ },
+ {
+  "name": "Cloudnine Hospital",
+  "phone": "108",
+  "lat": 30.700136,
+  "lng": 76.787576
+ },
+ {
+  "name": "Babe Ke Hospital And IMT",
+  "phone": "108",
+  "lat": 30.724507,
+  "lng": 76.732464
+ },
+ {
+  "name": "Nirmal Dr. Bhasin Jannee Fertility Centre",
+  "phone": "108",
+  "lat": 30.742139,
+  "lng": 76.735669
+ },
+ {
+  "name": "Dr. Ashok Sharma's Cornea Centre",
+  "phone": "108",
+  "lat": 30.727605,
+  "lng": 76.769457
+ },
+ {
+  "name": "Dr. Chandan Trikha Homeopathic Hospital",
+  "phone": "108",
+  "lat": 30.712789,
+  "lng": 76.777409
+ },
+ {
+  "name": "Hospital",
+  "phone": "108",
+  "lat": 30.731417,
+  "lng": 76.7725
+ },
+ {
+  "name": "Pandhi Hospital",
+  "phone": "108",
+  "lat": 30.726638,
+  "lng": 76.752325
+ },
+ {
+  "name": "Dr. Priyanka Sharma Gynaecologist",
+  "phone": "108",
+  "lat": 30.735249,
+  "lng": 76.800628
+ },
+ {
+  "name": "Chd City Hospital",
+  "phone": "108",
+  "lat": 30.741709,
+  "lng": 76.794256
+ },
+ {
+  "name": "Guru Nanak Multispeciality Hospital",
+  "phone": "108",
+  "lat": 30.72554,
+  "lng": 76.76229
+ },
+ {
+  "name": "Kaushal Clinic & Clinical Lab",
+  "phone": "108",
+  "lat": 30.752584,
+  "lng": 76.717353
+ },
+ {
+  "name": "Fortis Medcentre Hospital",
+  "phone": "108",
+  "lat": 30.760621,
+  "lng": 76.782037
+ },
+ {
+  "name": "Chhuttani Medical Centre - Psychiatrist & De-addiction Centre",
+  "phone": "108",
+  "lat": 30.740194,
+  "lng": 76.782629
+ },
+ {
+  "name": "ARV Othopaedic Hospital",
+  "phone": "108",
+  "lat": 30.726406,
+  "lng": 76.773247
+ },
+ {
+  "name": "Eden Hospital",
+  "phone": "108",
+  "lat": 30.709148,
+  "lng": 76.802711
+ },
+ {
+  "name": "Mamta Child Health Care Centre",
+  "phone": "108",
+  "lat": 30.731388,
+  "lng": 76.784999
+ },
+ {
+  "name": "Sarhind Orthopaedic Multispeciality Medical Centre",
+  "phone": "108",
+  "lat": 30.713433,
+  "lng": 76.768741
+ },
+ {
+  "name": "AM Eye Hospital",
+  "phone": "108",
+  "lat": 30.66343,
+  "lng": 76.87805
+ },
+ {
+  "name": "Medgenius Multispeciality Hospital",
+  "phone": "108",
+  "lat": 30.757135,
+  "lng": 76.669294
+ },
+ {
+  "name": "Tricity Eye Hospital",
+  "phone": "108",
+  "lat": 30.741557,
+  "lng": 76.676007
+ },
+ {
+  "name": "Prime Hospital",
+  "phone": "108",
+  "lat": 30.743158,
+  "lng": 76.675443
+ },
+ {
+  "name": "Metropolis The Pathology Specialist",
+  "phone": "108",
+  "lat": 30.813421,
+  "lng": 76.703366
+ },
+ {
+  "name": "Chhabra Hospital",
+  "phone": "108",
+  "lat": 30.748954,
+  "lng": 76.674675
+ },
+ {
+  "name": "Omega Hospital",
+  "phone": "108",
+  "lat": 30.74192,
+  "lng": 76.666357
+ },
+ {
+  "name": "HMS Child Speciality Hospital",
+  "phone": "108",
+  "lat": 30.759661,
+  "lng": 76.664749
+ },
+ {
+  "name": "Aditya Multispeciality Hospital & Hair Transplant Centre",
+  "phone": "108",
+  "lat": 30.74389,
+  "lng": 76.666326
+ },
+ {
+  "name": "Hamdard Ayurvedic Hospital",
+  "phone": "108",
+  "lat": 30.745432,
+  "lng": 76.674463
+ },
+ {
+  "name": "Ziva Hospital",
+  "phone": "108",
+  "lat": 30.742111,
+  "lng": 76.669465
+ },
+ {
+  "name": "Homi Bhabha Cancer Hospital and Research Centre",
+  "phone": "108",
+  "lat": 30.818388,
+  "lng": 76.742453
+ },
+ {
+  "name": "Bhupindera Hospital",
+  "phone": "108",
+  "lat": 30.729319,
+  "lng": 76.694635
+ },
+ {
+  "name": "Universal Institute & Charitable Hospiital",
+  "phone": "108",
+  "lat": 30.683514,
+  "lng": 76.723983
+ },
+ {
+  "name": "Sohana Hospital",
+  "phone": "108",
+  "lat": 30.692971,
+  "lng": 76.699132
+ },
+ {
+  "name": "BSF Hospital",
+  "phone": "108",
+  "lat": 30.697452,
+  "lng": 76.67879
+ },
+ {
+  "name": "R.P Hospital",
+  "phone": "108",
+  "lat": 30.641623,
+  "lng": 76.684714
+ },
+ {
+  "name": "Pancham Hospital",
+  "phone": "108",
+  "lat": 30.732776,
+  "lng": 76.682105
+ },
+ {
+  "name": "Chahal Hospital",
+  "phone": "108",
+  "lat": 30.681651,
+  "lng": 76.743628
+ },
+ {
+  "name": "Shri Guru Nanak Dev Ji Hospital",
+  "phone": "108",
+  "lat": 30.732474,
+  "lng": 76.695405
+ },
+ {
+  "name": "Dr. Amritpal Hospital",
+  "phone": "108",
+  "lat": 30.713208,
+  "lng": 76.717471
+ },
+ {
+  "name": "Gopal Hospital",
+  "phone": "108",
+  "lat": 30.70766,
+  "lng": 76.723614
+ },
+ {
+  "name": "Grand Hospital",
+  "phone": "108",
+  "lat": 30.684294,
+  "lng": 76.74268
+ },
+ {
+  "name": "Vinod Hospital",
+  "phone": "108",
+  "lat": 30.733443,
+  "lng": 76.668259
+ },
+ {
+  "name": "Trauma and Emergency Critical Care",
+  "phone": "108",
+  "lat": 30.691666,
+  "lng": 76.721233
+ },
+ {
+  "name": "Aayush Hospital",
+  "phone": "108",
+  "lat": 30.731994,
+  "lng": 76.69388
+ },
+ {
+  "name": "Trehan Hospital",
+  "phone": "108",
+  "lat": 30.679541,
+  "lng": 76.724947
+ },
+ {
+  "name": "Mayo Healthcare Super Speciality Hospital",
+  "phone": "108",
+  "lat": 30.691547,
+  "lng": 76.716421
+ },
+ {
+  "name": "I- Med Hospital",
+  "phone": "108",
+  "lat": 30.681326,
+  "lng": 76.744445
+ },
+ {
+  "name": "Harmony Hospital",
+  "phone": "108",
+  "lat": 30.719722,
+  "lng": 76.705683
+ },
+ {
+  "name": "Dhingra Hospital and Surgical Centre",
+  "phone": "108",
+  "lat": 30.719702,
+  "lng": 76.713574
+ },
+ {
+  "name": "ENT Hospital",
+  "phone": "108",
+  "lat": 30.679946,
+  "lng": 76.745555
+ },
+ {
+  "name": "Dr. Virendra Dhanlhar Mayo Health Care Super Speciality Hospital",
+  "phone": "108",
+  "lat": 30.689984,
+  "lng": 76.71047
+ },
+ {
+  "name": "Ashirwad Hospital",
+  "phone": "108",
+  "lat": 30.636688,
+  "lng": 76.814532
+ },
+ {
+  "name": "Sethi Hospital",
+  "phone": "108",
+  "lat": 30.66385,
+  "lng": 76.828903
+ },
+ {
+  "name": "S.S Hospital",
+  "phone": "108",
+  "lat": 30.651605,
+  "lng": 76.822804
+ },
+ {
+  "name": "Dashmesh Hospital",
+  "phone": "108",
+  "lat": 30.650867,
+  "lng": 76.813201
+ },
+ {
+  "name": "Arya Hospital",
+  "phone": "108",
+  "lat": 30.657538,
+  "lng": 76.82222
+ },
+ {
+  "name": "Dr. R.C.P. Singh Memorial Charitable Hospital",
+  "phone": "108",
+  "lat": 30.643555,
+  "lng": 76.814295
+ },
+ {
+  "name": "Life Line Care",
+  "phone": "108",
+  "lat": 30.648143,
+  "lng": 76.813153
+ },
+ {
+  "name": "Trinity Hospital & Medical Research Institute",
+  "phone": "108",
+  "lat": 30.647272,
+  "lng": 76.804755
+ },
+ {
+  "name": "Multispeciality Hospital",
+  "phone": "108",
+  "lat": 30.638285,
+  "lng": 76.815826
+ },
+ {
+  "name": "Amcare Hospital",
+  "phone": "108",
+  "lat": 30.667707,
+  "lng": 76.85319
+ },
+ {
+  "name": "Doctor Square Multispeciality Hospital",
+  "phone": "108",
+  "lat": 30.639226,
+  "lng": 76.815782
+ },
+ {
+  "name": "Tara Hospital",
+  "phone": "108",
+  "lat": 30.654523,
+  "lng": 76.82151
+ },
+ {
+  "name": "Swastik Nursing Home",
+  "phone": "108",
+  "lat": 30.642803,
+  "lng": 76.826017
+ },
+ {
+  "name": "Osmed Healthcare Multispeciality Hospital",
+  "phone": "108",
+  "lat": 30.647778,
+  "lng": 76.812932
+ },
+ {
+  "name": "Blessings Hospital",
+  "phone": "108",
+  "lat": 30.655211,
+  "lng": 76.844939
+ },
+ {
+  "name": "Divine Physiotherapy and Neuro Rehabilitation Centre",
+  "phone": "108",
+  "lat": 30.647744,
+  "lng": 76.81294
+ },
+ {
+  "name": "Netra Eye Hospital",
+  "phone": "108",
+  "lat": 30.672544,
+  "lng": 76.855923
+ },
+ {
+  "name": "Jai Shree Shyam Skin Hospital",
+  "phone": "108",
+  "lat": 30.665817,
+  "lng": 76.855325
+ },
+ {
+  "name": "Matsya Hospital",
+  "phone": "108",
+  "lat": 30.662937,
+  "lng": 76.818202
+ },
+ {
+  "name": "Amcare Hospital",
+  "phone": "108",
+  "lat": 30.639136,
+  "lng": 76.816943
+ },
+ {
+  "name": "Saini Hospital",
+  "phone": "108",
+  "lat": 30.657978,
+  "lng": 76.816611
+ },
+ {
+  "name": "Mom and Me Hospital",
+  "phone": "108",
+  "lat": 30.653513,
+  "lng": 76.845072
+ },
+ {
+  "name": "Vishwas Hospital",
+  "phone": "108",
+  "lat": 30.648273,
+  "lng": 76.81247
+ },
+ {
+  "name": "V Care Hospital",
+  "phone": "108",
+  "lat": 30.639108,
+  "lng": 76.816079
+ },
+ {
+  "name": "Advamed Hospital",
+  "phone": "108",
+  "lat": 30.645441,
+  "lng": 76.822773
+ },
+ {
+  "name": "Vision Eye Hospital",
+  "phone": "108",
+  "lat": 30.666056,
+  "lng": 76.825308
+ },
+ {
+  "name": "Dhuper Hospital",
+  "phone": "108",
+  "lat": 30.65212,
+  "lng": 76.822365
+ },
+ {
+  "name": "Life Line Hospital",
+  "phone": "108",
+  "lat": 30.668666,
+  "lng": 76.813481
+ },
+ {
+  "name": "Santosh Hospital",
+  "phone": "108",
+  "lat": 30.652166,
+  "lng": 76.81857
+ },
+ {
+  "name": "Malik Multi-Speciality Hospital",
+  "phone": "0172-582524",
+  "lat": 30.672909,
+  "lng": 76.850997
+ },
+ {
+  "name": "Yukti Herbs",
+  "phone": "08283865637",
+  "lat": 30.653331,
+  "lng": 76.734982
+ },
+ {
+  "name": "Air Force Hospital",
+  "phone": "108",
+  "lat": 30.703395,
+  "lng": 76.777515
+ },
+ {
+  "name": "Mental Health Institute",
+  "phone": "108",
+  "lat": 30.704232,
+  "lng": 76.775198
+ },
+ {
+  "name": "Akaal Medical Center (Akaal Clinic)",
+  "phone": "108",
+  "lat": 30.691252,
+  "lng": 76.698961
+ },
+ {
+  "name": "Dental Diaries",
+  "phone": "108",
+  "lat": 30.766659,
+  "lng": 76.670008
+ },
+ {
+  "name": "Superintended Hospital Engineer Building",
+  "phone": "108",
+  "lat": 30.765226,
+  "lng": 76.775577
+ },
+ {
+  "name": "Ivy Health and Life Sciences Pvt. Ltd",
+  "phone": "0172 717 0000",
+  "lat": 30.706628,
+  "lng": 76.708319
+ },
+ {
+  "name": "GMCH SECTOR 32",
+  "phone": "0172-2601023",
+  "lat": 30.709111,
+  "lng": 76.780695
+ },
+ {
+  "name": "Hospital",
+  "phone": "108",
+  "lat": 30.708534,
+  "lng": 76.777462
+ },
+ {
+  "name": "GMSH Sector-16",
+  "phone": "1722768119",
+  "lat": 30.750814,
+  "lng": 76.780947
+ },
+ {
+  "name": "Civil Hospital Panchkula",
+  "phone": "0172-567540",
+  "lat": 30.704849,
+  "lng": 76.855683
+ },
+ {
+  "name": "Command Hospital",
+  "phone": "108",
+  "lat": 30.71313,
+  "lng": 76.853928
+ },
+ {
+  "name": "Alchemist Hospital, Panchkula",
+  "phone": "108",
+  "lat": 30.674544,
+  "lng": 76.864769
+ },
+ {
+  "name": "Cancer Hospital",
+  "phone": "108",
+  "lat": 30.763393,
+  "lng": 76.781005
+ },
+ {
+  "name": "New OPD",
+  "phone": "108",
+  "lat": 30.762896,
+  "lng": 76.780862
+ },
+ {
+  "name": "Fortis Hospital",
+  "phone": "108",
+  "lat": 30.694798,
+  "lng": 76.73108
+ },
+ {
+  "name": "Oscar Medical Center",
+  "phone": "+91-9053893331",
+  "lat": 30.671106,
+  "lng": 76.886636
+ },
+ {
+  "name": "Ojas Hospital",
+  "phone": "+91 172 4500000",
+  "lat": 30.660991,
+  "lng": 76.882254
+ },
+ {
+  "name": "Government Poly Clinic",
+  "phone": "108",
+  "lat": 30.661489,
+  "lng": 76.882431
+ },
+ {
+  "name": "Om Hospital",
+  "phone": "108",
+  "lat": 30.656832,
+  "lng": 76.883796
+ },
+ {
+  "name": "Paras Hospital",
+  "phone": "108",
+  "lat": 30.693294,
+  "lng": 76.883247
+ },
+ {
+  "name": "RHTC Palsora",
+  "phone": "108",
+  "lat": 30.734745,
+  "lng": 76.717848
+ },
+ {
+  "name": "Bright Kidney Care Hospital",
+  "phone": "108",
+  "lat": 30.657746,
+  "lng": 76.876994
+ },
+ {
+  "name": "Prolife Hospital",
+  "phone": "+91-172-2930738",
+  "lat": 30.683561,
+  "lng": 76.865882
+ },
+ {
+  "name": "Mental Health Institute",
+  "phone": "108",
+  "lat": 30.704264,
+  "lng": 76.775149
+ },
+ {
+  "name": "Mother Teresa Saket Orthopaedic Hospital",
+  "phone": "108",
+  "lat": 30.701193,
+  "lng": 76.867065
+ },
+ {
+  "name": "Nehru Hospital",
+  "phone": "108",
+  "lat": 30.760872,
+  "lng": 76.776366
+ }
 ]

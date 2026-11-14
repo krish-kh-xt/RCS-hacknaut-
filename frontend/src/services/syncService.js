@@ -22,7 +22,7 @@ const status = {
   tripActive: false,
   lastSyncedAt: null,
   alertResolved: false,
-  error: null, // null | 'gps' | 'server'
+  error: null, // null | 'gps' | 'server' | 'user' (no registered user)
 };
 
 const subscribers = new Set();
@@ -115,6 +115,8 @@ export async function syncNow(posOverride) {
   } catch (err) {
     if (err.isNetworkError) {
       update({ online: false });
+    } else if (err.code === 'NO_USER') {
+      update({ error: 'user' });
     } else {
       // Server reachable but returned an error. Keep the old cache.
       update({ online: true, error: 'server' });
@@ -126,7 +128,11 @@ export async function syncNow(posOverride) {
 
 async function currentUserId() {
   const user = await getStoredUser();
-  if (!user) throw new Error('No user registered');
+  if (!user) {
+    const e = new Error('No user registered');
+    e.code = 'NO_USER';
+    throw e;
+  }
   return user.userId;
 }
 

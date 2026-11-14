@@ -1,204 +1,167 @@
-import { lazy, Suspense, useCallback, useEffect, useRef, useState } from 'react'
-import Onboarding from './screens/Onboarding.jsx'
-import Home from './screens/Home.jsx'
-import NearestHelp from './screens/NearestHelp.jsx'
-import OfflineMap from './screens/OfflineMap.jsx' // NEW: offline map screen
-
-/* =====================================================================
-   PART 1 BINDINGS  (the only place that touches Part 1 files)
-   Everything comes from ONE file: services/index.js (the offline engine).
-   See frontend/README.md for what each function returns.
-   ===================================================================== */
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   initEngine,
-  getUser,
   registerUser,
+  getUser,
   startTrip,
   endTrip,
   getNearestHelp,
   triggerSos,
   subscribeStatus,
-} from './services/index.js'
+} from './services/index.js';
+import Onboarding from './screens/Onboarding.jsx';
+import Home from './screens/Home.jsx';
+import NearestHelp from './screens/NearestHelp.jsx';
+import MapScreen from './screens/MapScreen.jsx';
+import Dashboard from './screens/dashboard/Dashboard.jsx';
 
-// DemoPanel.jsx belongs to Role E. If the file does not exist yet the app still builds.
-const demoModules = import.meta.glob('./screens/DemoPanel.jsx')
-const demoLoader = demoModules['./screens/DemoPanel.jsx']
-const DemoPanel = demoLoader ? lazy(demoLoader) : null
+// DemoPanel.jsx is written by another team member. It is picked up automatically if it exists.
+const demoModules = import.meta.glob('./screens/DemoPanel.jsx', { eager: true });
+const DemoPanel = Object.values(demoModules)[0]?.default;
 
-// Tiny hash router: '#/' (Home), '#/help', '#/map', '#/demo'.
 function useHashRoute() {
-  const read = () => window.location.hash.replace(/^#/, '') || '/'
-  const [route, setRoute] = useState(read)
+  const read = () => window.location.hash.replace(/^#/, '') || '/';
+  const [route, setRoute] = useState(read);
   useEffect(() => {
-    const onChange = () => setRoute(read())
-    window.addEventListener('hashchange', onChange)
-    return () => window.removeEventListener('hashchange', onChange)
-  }, [])
-  const navigate = useCallback((path) => { window.location.hash = path }, [])
-  return [route, navigate]
+    const on = () => setRoute(read());
+    window.addEventListener('hashchange', on);
+    return () => window.removeEventListener('hashchange', on);
+  }, []);
+  return route;
 }
 
 export default function App() {
-  const [route, navigate] = useHashRoute()
-  const [user, setUser] = useState(undefined) // undefined = still loading, null = not onboarded
-  const [onboardBusy, setOnboardBusy] = useState(false)
-  const [onboardError, setOnboardError] = useState(null)
+  const route = useHashRoute();
+  const [ready, setReady] = useState(false);
+  const [user, setUser] = useState(null);
+  const [status, setStatus] = useState({ online: navigator.onLine, tripActive: false, lastSyncedAt: null, alertResolved: false, error: null });
+  const [help, setHelp] = useState(null);
+  const [toast, setToast] = useState(null);
+  const [showDemo, setShowDemo] = useState(false);
+  const [sosState, setSosState] = useState('idle'); // idle | sent | queued
+  const taps = useRef({ n: 0, t: 0 });
 
-  const [tripBusy, setTripBusy] = useState(false)
-  const [tripError, setTripError] = useState(null)
+  const isDashboard = route.startsWith('/dashboard');
 
-  // Live status from the offline engine: online, tripActive, lastSyncedAt, alertResolved.
-  const [status, setStatus] = useState({ online: navigator.onLine, tripActive: false, lastSyncedAt: null })
-  const { online, tripActive, lastSyncedAt: lastSynced } = status
-  const [sosStatus, setSosStatus] = useState('idle')
-
-  // Start the engine once (retries queued SOS, resumes the trip after a reload),
-  // then load the saved user.
+  // Start the offline engine once.
   useEffect(() => {
-    initEngine()
-      .catch(() => {})
-      .then(() => getUser())
-      .then((u) => setUser(u || null))
-      .catch(() => setUser(null))
-  }, [])
+    let off = () => {};
+    (async () => {
+      try {
+        await initEngine();
+        setUser(await getUser());
+        off = subscribeStatus(setStatus);
+      } finally {
+        setReady(true);
+      }
+    })();
+    return () => off();
+  }, []);
 
-  // Online/offline, trip state and last-synced time all come from the engine.
-  useEffect(() => subscribeStatus(setStatus), [])
-
-  async function handleOnboard(details) {
-    setOnboardBusy(true); setOnboardError(null)
+  const refreshHelp = useCallback(async () => {
     try {
-      const { userId } = await registerUser(details)
-      setUser({ userId, ...details })
-    } catch (err) {
-      setOnboardError(
-        err?.isNetworkError
-          ? 'Could not reach the server. Check your internet and try again.'
-          : err?.message || 'Something went wrong. Please try again.'
-      )
-    } finally {
-      setOnboardBusy(false)
-    }
-  }
-
-  async function handleStartTrip() {
-    setTripBusy(true); setTripError(null)
-    try {
-      await startTrip() // also starts the 5-minute sync and keeps the screen awake
-    } catch (err) {
-      setTripError(err?.message || 'Could not start the trip. Check your internet and try again.')
-    } finally {
-      setTripBusy(false)
-    }
-  }
-
-  async function handleEndTrip() {
-    setTripBusy(true); setTripError(null)
-    try {
-      await endTrip()
-    } catch (err) {
-      setTripError(err?.message || 'Could not end the trip. Check your internet and try again.')
-    } finally {
-      setTripBusy(false)
-    }
-  }
-
-  async function handleSos() {
-    setSosStatus('sending')
-    try {
-      const result = await triggerSos() // sends now, or saves it for when internet returns
-      setSosStatus(result?.queued ? 'queued' : 'sent')
+      setHelp(await getNearestHelp());
     } catch {
-      setSosStatus('error')
+      /* keep the previous list on screen */
     }
-  }
+  }, []);
 
-  // Hidden demo panel: tap the logo 5 times.
-  const taps = useRef({ n: 0, timer: null })
-  function handleLogoTap() {
-    const t = taps.current
-    t.n += 1
-    clearTimeout(t.timer)
-    t.timer = setTimeout(() => { t.n = 0 }, 2000)
-    if (t.n >= 5) { t.n = 0; if (DemoPanel) navigate('/demo') }
-  }
+  // Reload nearest help on start, after each sync, and when the connection changes.
+  useEffect(() => {
+    if (ready && user) refreshHelp();
+  }, [ready, user, status.lastSyncedAt, status.online, route, refreshHelp]);
 
-  // ---- render ----
-  if (user === undefined) {
-    return <div className="boot" role="status" aria-label="Loading"><span className="spinner" /></div>
-  }
+  // Keep "Synced 2 min ago" fresh.
+  const [, setTick] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setTick((n) => n + 1), 30000);
+    return () => clearInterval(id);
+  }, []);
 
-  let screen
+  const flash = (msg, tone = 'info') => {
+    setToast({ msg, tone });
+    setTimeout(() => setToast(null), 4500);
+  };
+
+  const onRegister = async (data) => {
+    await registerUser(data);
+    setUser(await getUser());
+  };
+
+  const onSos = async () => {
+    try {
+      const r = await triggerSos();
+      if (r?.sent) {
+        setSosState('sent');
+        flash('SOS sent. Help is on the way.', 'ok');
+      } else if (r?.queued) {
+        setSosState('queued');
+        flash('No internet. SOS saved and will be sent automatically.', 'warn');
+      } else {
+        flash('Could not send SOS. Try again.', 'error');
+        return;
+      }
+      setTimeout(() => setSosState('idle'), 10000); // button goes back to red after 10 seconds
+    } catch {
+      flash('Could not send SOS. Try again.', 'error');
+    }
+  };
+
+  const onStartTrip = async () => {
+    try {
+      await startTrip();
+      flash('Trip started. RCS is keeping your help list updated.', 'ok');
+    } catch {
+      flash('Could not start the trip. Try again.', 'error');
+    }
+  };
+
+  const onEndTrip = async () => {
+    try {
+      await endTrip();
+      setSosState('idle');
+      flash('Trip ended.');
+    } catch {
+      flash('Could not end the trip. Try again.', 'error');
+    }
+  };
+
+  // Tap the logo 5 times quickly to open the demo panel.
+  const onLogoTap = () => {
+    const now = Date.now();
+    taps.current = now - taps.current.t > 1500 ? { n: 1, t: now } : { n: taps.current.n + 1, t: now };
+    if (taps.current.n >= 5 && DemoPanel) {
+      taps.current = { n: 0, t: 0 };
+      setShowDemo(true);
+    }
+  };
+
+  if (isDashboard) return <Dashboard route={route} />;
+
+  if (!ready) return <div className="splash" aria-busy="true">RCS</div>;
+
+  let screen;
   if (!user) {
-    screen = <Onboarding onSubmit={handleOnboard} loading={onboardBusy} error={onboardError} />
+    screen = <Onboarding onRegister={onRegister} onLogoTap={onLogoTap} />;
   } else if (route === '/help') {
-    screen = (
-      <NearestHelp
-        loadNearest={getNearestHelp}
-        online={online}
-        lastSynced={lastSynced}
-      />
-    )
+    screen = <NearestHelp help={help} status={status} onLogoTap={onLogoTap} />;
   } else if (route === '/map') {
-    // NEW: offline map screen
-    screen = <OfflineMap />
-  } else if (route === '/demo' && DemoPanel) {
-    screen = (
-      <Suspense fallback={<div className="boot"><span className="spinner" /></div>}>
-        <DemoPanel user={user} onClose={() => navigate('/')} />
-      </Suspense>
-    )
+    screen = <MapScreen help={help} onLogoTap={onLogoTap} />;
   } else {
     screen = (
-      <Home
-        user={user}
-        tripActive={tripActive}
-        online={online}
-        lastSynced={lastSynced}
-        tripBusy={tripBusy}
-        tripError={tripError}
-        sosStatus={sosStatus}
-        onStartTrip={handleStartTrip}
-        onEndTrip={handleEndTrip}
-        onSos={handleSos}
-        onOpenHelp={() => navigate('/help')}
-      />
-    )
+      <Home status={status} help={help} sosState={sosState} onSos={onSos} onStartTrip={onStartTrip} onEndTrip={onEndTrip} onLogoTap={onLogoTap} />
+    );
   }
-
-  const onHelp = route === '/help'
-  const onMap = route === '/map'          // NEW
-  const onHome = !onHelp && !onMap        // CHANGED: Home is current only when neither Help nor Map is open
 
   return (
     <div className="app-shell">
-      <header className="app-header">
-        <button type="button" className="logo" onClick={handleLogoTap} aria-label="RCS">
-          <img src="/icons/icon-192.png" alt="" width="32" height="32" />
-          <span>RCS</span>
-        </button>
-        {!online && <span className="header-offline">Offline mode</span>}
-      </header>
-
-      <main className={`app-main ${onMap ? 'app-main--map' : ''}`}>{screen}</main>
-
-      {user && (
-        <nav className="tabbar" aria-label="Main">
-          <a href="#/" className={`tab ${onHome ? 'is-current' : ''}`} aria-current={onHome ? 'page' : undefined}>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 2 12h3v8h5v-5h4v5h5v-8h3z" fill="currentColor" /></svg>
-            Home
-          </a>
-          <a href="#/help" className={`tab ${onHelp ? 'is-current' : ''}`} aria-current={onHelp ? 'page' : undefined}>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a7 7 0 0 0-7 7c0 5.2 7 13 7 13s7-7.8 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor" /></svg>
-            Nearest help
-          </a>
-          {/* NEW: Map tab */}
-          <a href="#/map" className={`tab ${onMap ? 'is-current' : ''}`} aria-current={onMap ? 'page' : undefined}>
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 4 9 6 3 4v14l6 2 6-2 6 2V6zM9 8.2l6-2v9.6l-6 2z" fill="currentColor" /></svg>
-            Map
-          </a>
-        </nav>
+      {screen}
+      {toast && (
+        <div className={'toast toast--' + toast.tone} role="status">
+          {toast.msg}
+        </div>
       )}
+      {showDemo && DemoPanel && <DemoPanel user={user} onClose={() => setShowDemo(false)} />}
     </div>
-  )
+  );
 }

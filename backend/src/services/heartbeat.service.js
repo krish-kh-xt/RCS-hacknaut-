@@ -19,10 +19,11 @@ async function recordHeartbeat({ userId, lat, lng, battery }) {
       battery,
     ]);
 
-    // The traveller is online again, so any unresolved alert is over.
+    // The traveller is online again, so any unresolved SILENCE alert is over.
+    // An SOS the user pressed on purpose is left for patrol to resolve.
     const resolved = await client.query(
       `update alerts set status = 'RESOLVED', resolved_at = now()
-       where user_id = $1 and status <> 'RESOLVED'`,
+       where user_id = $1 and status <> 'RESOLVED' and source = 'SILENCE'`,
       [userId]
     );
 

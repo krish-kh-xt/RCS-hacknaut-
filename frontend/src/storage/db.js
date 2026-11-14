@@ -89,6 +89,12 @@ export async function getQueuedSos() {
   return db.getAll('sosQueue');
 }
 
+// Save changes to a queued SOS (used to mark one as rejected by the server).
+export async function updateQueuedSos(entry) {
+  const db = await getDb();
+  await db.put('sosQueue', entry);
+}
+
 export async function removeQueuedSos(qid) {
   const db = await getDb();
   await db.delete('sosQueue', qid);

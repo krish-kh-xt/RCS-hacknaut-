@@ -1,31 +1,24 @@
 import { useState } from 'react';
 import { resolveAlert } from '../services/api.js';
 
-// Calls POST /alerts/:id/resolve, then asks the page to refresh.
-export default function ResolveButton({ alertId, onResolved }) {
+export default function ResolveButton({ id, onDone, label = 'Mark resolved', className = 'btn-outline' }) {
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState('');
 
-  async function handleClick(e) {
-    e.stopPropagation();
+  async function handle() {
     setBusy(true);
-    setError('');
     try {
-      await resolveAlert(alertId);
-      await onResolved();
-    } catch (err) {
-      setError(err.message || 'Could not mark as resolved');
+      await resolveAlert(id);
+      await onDone?.();
+    } catch (e) {
+      alert(`Could not resolve alert: ${e.message}`);
     } finally {
       setBusy(false);
     }
   }
 
   return (
-    <div>
-      <button type="button" className="btn-resolve" onClick={handleClick} disabled={busy}>
-        {busy ? 'Marking resolved...' : 'Mark resolved'}
-      </button>
-      {error && <p className="error-text">{error}</p>}
-    </div>
+    <button className={className} onClick={handle} disabled={busy}>
+      {busy ? 'Resolving…' : label}
+    </button>
   );
 }

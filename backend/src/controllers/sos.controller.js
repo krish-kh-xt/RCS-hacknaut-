@@ -1,14 +1,12 @@
 const alertService = require('../services/alert.service');
+const { requireInt, requireNumber } = require('../utils/validate');
 
 // POST /sos   body: { userId, lat, lng }   ->   { alertId }
 async function createSos(req, res, next) {
   try {
-    const userId = Number(req.body.userId);
-    const lat = Number(req.body.lat);
-    const lng = Number(req.body.lng);
-    if (!Number.isInteger(userId) || !Number.isFinite(lat) || !Number.isFinite(lng)) {
-      throw alertService.httpError(400, 'userId, lat and lng are required numbers');
-    }
+    const userId = requireInt(req.body.userId, 'userId');
+    const lat = requireNumber(req.body.lat, 'lat', -90, 90);
+    const lng = requireNumber(req.body.lng, 'lng', -180, 180);
     const alertId = await alertService.createSosAlert({ userId, lat, lng });
     res.json({ alertId });
   } catch (err) {

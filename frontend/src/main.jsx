@@ -1,11 +1,16 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import App from './App.jsx'
-import './styles/app.css'
+import React from 'react';
+import { createRoot } from 'react-dom/client';
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/500.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+import '@fontsource/poppins/600-italic.css';
+import 'leaflet/dist/leaflet.css';
+import './styles/app.css';
+import App from './App.jsx';
 
-// The service worker is registered by vite-plugin-pwa (see vite.config.js, Part 1).
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <React.StrictMode>
     <App />
-  </StrictMode>
-)
+  </React.StrictMode>
+);

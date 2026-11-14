@@ -31,7 +31,7 @@ export async function getBestPosition(options) {
   } catch {
     const meta = await getMeta();
     if (meta.lastPosition) {
-      return { lat: meta.lastPosition.lat, lng: meta.lastPosition.lng, fresh: false };
+      return { lat: meta.lastPosition.lat, lng: meta.lastPosition.lng, fresh: false, at: meta.lastPosition.at || null };
     }
     return null;
   }

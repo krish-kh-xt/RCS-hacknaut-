@@ -77,18 +77,45 @@ async function resolveOpenAlertsForUser(userId) {
 }
 
 // Patrol presses "Mark resolved". Already-resolved alerts are fine (idempotent).
+// Monitoring for that user is paused (trip_active = false) so the worker does not
+// immediately re-alert on the same old heartbeat. The next /sync turns it back on.
 async function resolveAlertById(id) {
-  const { rowCount } = await pool.query(
+  const { rows } = await pool.query(
     `update alerts
         set status = 'RESOLVED', resolved_at = now()
-      where id = $1 and status <> 'RESOLVED'`,
+      where id = $1 and status <> 'RESOLVED'
+      returning user_id`,
     [id]
   );
-  if (rowCount === 0) {
-    const { rows } = await pool.query('select 1 from alerts where id = $1', [id]);
-    if (rows.length === 0) throw httpError(404, 'alert not found');
+  if (rows.length > 0) {
+    await pool.query('update users set trip_active = false where id = $1', [rows[0].user_id]);
+  } else {
+    const exists = await pool.query('select 1 from alerts where id = $1', [id]);
+    if (exists.rows.length === 0) throw httpError(404, 'alert not found');
   }
   return true;
+}
+
+// The user answered "OK" (real SMS reply or demo button): resolve their open alerts AND
+// record a heartbeat at the last known location. Without that heartbeat the old one is
+// still past the silence limit and the worker would raise a new alert a minute later.
+// Returns how many alerts were resolved.
+async function resolveByReply(userId) {
+  const { rows } = await pool.query(
+    `update alerts
+        set status = 'RESOLVED', resolved_at = now()
+      where user_id = $1 and status <> 'RESOLVED'
+      returning last_lat, last_lng`,
+    [userId]
+  );
+  if (rows.length > 0) {
+    await pool.query('insert into heartbeats (user_id, lat, lng, battery) values ($1, $2, $3, null)', [
+      userId,
+      rows[0].last_lat,
+      rows[0].last_lng,
+    ]);
+  }
+  return rows.length;
 }
 
 // SMS reply from the gateway. Only "OK" (any case, trimmed) cancels the alarm.
@@ -108,7 +135,7 @@ async function resolveByPhoneReply(phone, message) {
   );
 
   let resolved = 0;
-  for (const u of rows) resolved += await resolveOpenAlertsForUser(u.id);
+  for (const u of rows) resolved += await resolveByReply(u.id);
   return { resolved };
 }
 
@@ -274,6 +301,7 @@ module.exports = {
   httpError,
   listAlerts,
   resolveOpenAlertsForUser,
+  resolveByReply,
   resolveAlertById,
   resolveByPhoneReply,
   createSosAlert,

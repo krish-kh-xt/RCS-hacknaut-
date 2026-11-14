@@ -1,7 +1,110 @@
 [
-  { "name": "Patrol Unit 1, Ropar",           "phone": "+910000000001", "lat": 30.9800, "lng": 76.5350 },
-  { "name": "Patrol Unit 2, Anandpur Sahib",  "phone": "+910000000002", "lat": 31.2300, "lng": 76.5000 },
-  { "name": "Patrol Unit 3, Kiratpur",        "phone": "+910000000003", "lat": 31.1850, "lng": 76.5700 },
-  { "name": "Patrol Unit 4, Swarghat",        "phone": "+910000000004", "lat": 31.2100, "lng": 76.7000 },
-  { "name": "Patrol Unit 5, Bilaspur",        "phone": "+910000000005", "lat": 31.3300, "lng": 76.7500 }
+ {
+  "name": "Police Station, Sector 39",
+  "phone": "112",
+  "lat": 30.745196,
+  "lng": 76.726411
+ },
+ {
+  "name": "Police Station Palsora",
+  "phone": "112",
+  "lat": 30.73944,
+  "lng": 76.716206
+ },
+ {
+  "name": "Police Station phase 8",
+  "phone": "0172-5044672",
+  "lat": 30.694261,
+  "lng": 76.727973
+ },
+ {
+  "name": "Police Station Sector 14",
+  "phone": "112",
+  "lat": 30.680162,
+  "lng": 76.847905
+ },
+ {
+  "name": "Government Railway Police Station",
+  "phone": "112",
+  "lat": 30.703522,
+  "lng": 76.819416
+ },
+ {
+  "name": "Police Station",
+  "phone": "112",
+  "lat": 30.700846,
+  "lng": 76.778901
+ },
+ {
+  "name": "Police station",
+  "phone": "112",
+  "lat": 30.712102,
+  "lng": 76.796364
+ },
+ {
+  "name": "Police station",
+  "phone": "112",
+  "lat": 30.738902,
+  "lng": 76.778584
+ },
+ {
+  "name": "Police Post Sector 25",
+  "phone": "+91-172-2550514",
+  "lat": 30.673172,
+  "lng": 76.880409
+ },
+ {
+  "name": "Sector 7 Police station",
+  "phone": "112",
+  "lat": 30.710408,
+  "lng": 76.845414
+ },
+ {
+  "name": "Police Station South",
+  "phone": "112",
+  "lat": 30.720061,
+  "lng": 76.764276
+ },
+ {
+  "name": "Crime Branch",
+  "phone": "+91 172 2550013",
+  "lat": 30.657805,
+  "lng": 76.885901
+ },
+ {
+  "name": "Women Police Station",
+  "phone": "112",
+  "lat": 30.693742,
+  "lng": 76.852167
+ },
+ {
+  "name": "Police Station Chandimandir",
+  "phone": "112",
+  "lat": 30.691346,
+  "lng": 76.883743
+ },
+ {
+  "name": "Haryana Emergency 112 Helpline Center",
+  "phone": "112",
+  "lat": 30.693755,
+  "lng": 76.870823
+ },
+ {
+  "name": "Police Post Sector 21",
+  "phone": "112",
+  "lat": 30.676549,
+  "lng": 76.863479
+ },
+ {
+  "name": "Police Station Sector 1",
+  "phone": "112",
+  "lat": 30.700883,
+  "lng": 76.868268
+ },
+ {
+  "name": "Sector 3 Police Station",
+  "phone": "112",
+  "lat": 30.756808,
+  "lng": 76.796995
+ }
 ]

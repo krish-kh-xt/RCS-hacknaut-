@@ -19,7 +19,7 @@ async function demoSilence(req, res, next) {
 // POST /demo/reply/:userId - same resolve logic as a real "OK" SMS reply.
 async function demoReply(req, res, next) {
   try {
-    const resolved = await alertService.resolveOpenAlertsForUser(parseUserId(req));
+    const resolved = await alertService.resolveByReply(parseUserId(req));
     res.json({ ok: true, resolved });
   } catch (err) {
     next(err);
