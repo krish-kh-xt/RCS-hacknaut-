@@ -6,7 +6,7 @@ const config = require('../config/env');
 const LIMIT = 15;
 const POINT = 'ST_SetSRID(ST_MakePoint($1::float8, $2::float8), 4326)::geography';
 
-// type is one of: hospital, police, highway
+// type is one of: hospital, police, highway, fuel
 async function nearestOfType(lng, lat, type) {
   const { rows } = await query(
     `select id, type, name, coalesce(phone, '') as phone, highway_ref as "highwayRef",
@@ -43,6 +43,7 @@ async function getNearbyPlaces(lat, lng) {
     nearestOfType(lng, lat, 'hospital'),
     nearestOfType(lng, lat, 'police'),
     nearestOfType(lng, lat, 'highway'),
+    nearestOfType(lng, lat, 'fuel'),
     nearestPatrol(lng, lat),
   ]);
   return groups

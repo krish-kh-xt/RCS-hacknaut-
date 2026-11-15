@@ -3,7 +3,7 @@ import BottomNav from '../components/BottomNav.jsx';
 import PlaceCard, { kindLabel } from '../components/PlaceCard.jsx';
 import StatusBadge from '../components/StatusBadge.jsx';
 
-const KINDS = ['hospital', 'police', 'highway', 'patrol'];
+const KINDS = ['hospital', 'police', 'fuel', 'highway', 'patrol'];
 
 export default function NearestHelp({ help, status, onLogoTap }) {
   return (

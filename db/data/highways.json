@@ -1,30 +1,359 @@
 [
  {
-  "name": "Sale Tax Barrier",
+  "name": "Toll Plaza",
   "phone": "1033",
-  "lat": 30.733384,
-  "lng": 76.696032,
+  "lat": 30.988967,
+  "lng": 75.790603,
+  "highway_ref": "NH"
+ },
+ {
+  "name": "Rohan Rajdeep Toolwayz",
+  "phone": "1033",
+  "lat": 30.802597,
+  "lng": 75.653018,
   "highway_ref": "NH"
  },
  {
   "name": "Highway help point",
   "phone": "1033",
-  "lat": 30.738933,
-  "lng": 76.897854,
+  "lat": 30.971433,
+  "lng": 75.751274,
   "highway_ref": "NH"
  },
  {
-  "name": "Highway help point",
+  "name": "SH11 - Gill Road",
   "phone": "1033",
-  "lat": 30.738783,
-  "lng": 76.898114,
-  "highway_ref": "NH"
+  "lat": 30.892475,
+  "lng": 75.858449,
+  "highway_ref": "SH11"
  },
  {
-  "name": "Highway help point",
+  "name": "NH5 - Ferozepur Road",
   "phone": "1033",
-  "lat": 30.738837,
-  "lng": 76.89801,
-  "highway_ref": "NH"
+  "lat": 30.868806,
+  "lng": 75.739161,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH44",
+  "phone": "1033",
+  "lat": 30.982625,
+  "lng": 75.793668,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road",
+  "phone": "1033",
+  "lat": 30.79895,
+  "lng": 76.029261,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "SH11 - Gill Road",
+  "phone": "1033",
+  "lat": 30.778153,
+  "lng": 75.855253,
+  "highway_ref": "SH11"
+ },
+ {
+  "name": "SH11 - Gill Road",
+  "phone": "1033",
+  "lat": 30.849847,
+  "lng": 75.860434,
+  "highway_ref": "SH11"
+ },
+ {
+  "name": "NH44",
+  "phone": "1033",
+  "lat": 31.009332,
+  "lng": 75.785159,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road Flyover",
+  "phone": "1033",
+  "lat": 30.875428,
+  "lng": 75.905942,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH5 - Ferozepur Road",
+  "phone": "1033",
+  "lat": 30.863563,
+  "lng": 75.724612,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "SH11 - Gill Road",
+  "phone": "1033",
+  "lat": 30.858019,
+  "lng": 75.859854,
+  "highway_ref": "SH11"
+ },
+ {
+  "name": "SH11",
+  "phone": "1033",
+  "lat": 30.811554,
+  "lng": 75.86503,
+  "highway_ref": "SH11"
+ },
+ {
+  "name": "NH44",
+  "phone": "1033",
+  "lat": 30.974455,
+  "lng": 75.797682,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH5 - Ropar-Doraha Road",
+  "phone": "1033",
+  "lat": 30.830842,
+  "lng": 76.076254,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH44 - GT Road;Sher Shah Suri Marg",
+  "phone": "1033",
+  "lat": 30.778486,
+  "lng": 76.05989,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "SH13 - Ludhiana Road",
+  "phone": "1033",
+  "lat": 30.774124,
+  "lng": 75.650567,
+  "highway_ref": "SH13"
+ },
+ {
+  "name": "SH13 - Ludhiana Road",
+  "phone": "1033",
+  "lat": 30.756339,
+  "lng": 75.648857,
+  "highway_ref": "SH13"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road Flyover",
+  "phone": "1033",
+  "lat": 30.864382,
+  "lng": 75.860362,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5 - Flyover",
+  "phone": "1033",
+  "lat": 30.887437,
+  "lng": 75.820154,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "SH11 - Malerkotla Road",
+  "phone": "1033",
+  "lat": 30.774695,
+  "lng": 75.854445,
+  "highway_ref": "SH11"
+ },
+ {
+  "name": "SH13 - Ludhiana Road",
+  "phone": "1033",
+  "lat": 30.843486,
+  "lng": 75.671703,
+  "highway_ref": "SH13"
+ },
+ {
+  "name": "NH5",
+  "phone": "1033",
+  "lat": 30.831143,
+  "lng": 75.617252,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "SH13 - Ludhiana Road",
+  "phone": "1033",
+  "lat": 30.818324,
+  "lng": 75.660288,
+  "highway_ref": "SH13"
+ },
+ {
+  "name": "SH11 - Malerkotla Road",
+  "phone": "1033",
+  "lat": 30.76303,
+  "lng": 75.852444,
+  "highway_ref": "SH11"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road Flyover",
+  "phone": "1033",
+  "lat": 30.9371,
+  "lng": 75.837871,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road",
+  "phone": "1033",
+  "lat": 30.792262,
+  "lng": 76.024482,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road Flyover",
+  "phone": "1033",
+  "lat": 30.87134,
+  "lng": 75.85248,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road Flyover",
+  "phone": "1033",
+  "lat": 30.885909,
+  "lng": 75.885811,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road",
+  "phone": "1033",
+  "lat": 30.798125,
+  "lng": 76.029814,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road",
+  "phone": "1033",
+  "lat": 30.795637,
+  "lng": 75.972829,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road Flyover",
+  "phone": "1033",
+  "lat": 30.931403,
+  "lng": 75.869836,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road",
+  "phone": "1033",
+  "lat": 30.89171,
+  "lng": 75.883871,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road",
+  "phone": "1033",
+  "lat": 30.845822,
+  "lng": 75.957323,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road",
+  "phone": "1033",
+  "lat": 30.855019,
+  "lng": 75.942243,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road",
+  "phone": "1033",
+  "lat": 30.82834,
+  "lng": 75.985324,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road",
+  "phone": "1033",
+  "lat": 30.840872,
+  "lng": 75.88706,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road",
+  "phone": "1033",
+  "lat": 30.853431,
+  "lng": 75.872846,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road",
+  "phone": "1033",
+  "lat": 30.810968,
+  "lng": 75.925288,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5 - Ludhiana Bypass Road",
+  "phone": "1033",
+  "lat": 30.824276,
+  "lng": 75.905812,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road",
+  "phone": "1033",
+  "lat": 30.819952,
+  "lng": 75.998007,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44",
+  "phone": "1033",
+  "lat": 30.975006,
+  "lng": 75.799713,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44 - Flyover",
+  "phone": "1033",
+  "lat": 30.945497,
+  "lng": 75.830588,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH5 - Ferozepur Road Flyover",
+  "phone": "1033",
+  "lat": 30.886726,
+  "lng": 75.789132,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5 - Ferozepur Road",
+  "phone": "1033",
+  "lat": 30.844749,
+  "lng": 75.672151,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5",
+  "phone": "1033",
+  "lat": 30.850485,
+  "lng": 75.688031,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH44 - Sher Shah Suri Marg - GT Road",
+  "phone": "1033",
+  "lat": 30.854926,
+  "lng": 75.942169,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH44",
+  "phone": "1033",
+  "lat": 31.041311,
+  "lng": 75.783174,
+  "highway_ref": "NH44"
+ },
+ {
+  "name": "NH5 - Ferozepur Road Flyover",
+  "phone": "1033",
+  "lat": 30.88197,
+  "lng": 75.77556,
+  "highway_ref": "NH5"
+ },
+ {
+  "name": "NH5 - Ropar-Doraha Road",
+  "phone": "1033",
+  "lat": 30.809828,
+  "lng": 76.040431,
+  "highway_ref": "NH5"
  }
 ]

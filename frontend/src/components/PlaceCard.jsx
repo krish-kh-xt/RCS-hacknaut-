@@ -5,6 +5,7 @@ const KIND = {
   hospital: { icon: 'cross', cls: 'red', label: 'Hospital' },
   police: { icon: 'shield', cls: 'blue', label: 'Police Station' },
   highway: { icon: 'road', cls: 'green', label: 'Highway Help' },
+  fuel: { icon: 'fuel', cls: 'amber', label: 'Fuel Station' },
   patrol: { icon: 'car', cls: 'purple', label: 'Patrol Unit' },
 };
 

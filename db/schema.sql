@@ -15,7 +15,7 @@ create table if not exists users (
 
 create table if not exists places (
   id          serial primary key,
-  type        text check (type in ('hospital', 'police', 'highway')),
+  type        text check (type in ('hospital', 'police', 'highway', 'fuel')),
   name        text,
   phone       text,                          -- may be empty
   highway_ref text,                          -- highway rows only, e.g. NH-44
@@ -54,3 +54,7 @@ create table if not exists patrol_units (
   geom  geography(Point,4326)
 );
 create index if not exists patrol_units_geom_idx on patrol_units using gist(geom);
+
+-- Existing databases: the line above does not change a table that already exists, so widen the check here.
+alter table places drop constraint if exists places_type_check;
+alter table places add constraint places_type_check check (type in ('hospital', 'police', 'highway', 'fuel'));

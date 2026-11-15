@@ -7,9 +7,9 @@ import { kindLabel } from '../components/PlaceCard.jsx';
 import { latOf, lngOf, km } from '../utils/format.js';
 
 const FALLBACK = [30.9, 75.85]; // Ludhiana, used only until a GPS fix or saved help exists
-const COLORS = { hospital: '#ef4444', police: '#3b82f6', highway: '#22c55e', patrol: '#a855f7' };
+const COLORS = { hospital: '#ef4444', police: '#3b82f6', highway: '#22c55e', fuel: '#f59e0b', patrol: '#a855f7' };
 const CAR = '<svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 16V12l1.6-4.2A2 2 0 0 1 8.5 6.5h7a2 2 0 0 1 1.9 1.3L19 12v4M5 16h14M7.5 13h.01M16.5 13h.01"/></svg>';
-const GLYPH = { hospital: '+', police: 'P', highway: 'H', patrol: CAR };
+const GLYPH = { hospital: '+', police: 'P', highway: 'H', fuel: 'F', patrol: CAR };
 const CHIPS = [
   { id: 'fuel', label: 'Fuel', icon: 'fuel', color: '#f59e0b' },
   { id: 'hospital', label: 'Hospital', icon: 'cross', color: '#ef4444' },
@@ -29,7 +29,7 @@ export default function MapScreen({ help, onLogoTap }) {
 
   const markers = useMemo(() => {
     const out = [];
-    for (const k of ['hospital', 'police', 'highway', 'patrol']) {
+    for (const k of ['hospital', 'police', 'highway', 'fuel', 'patrol']) {
       if (chip !== 'all' && chip !== k) continue;
       (help?.[k] || []).forEach((p, i) => {
         const lat = latOf(p);
@@ -93,7 +93,7 @@ export default function MapScreen({ help, onLogoTap }) {
             <Icon name="locate" size={20} />
           </button>
         </div>
-        {chip === 'fuel' && <p className="map-note">Fuel stations are not part of the saved data yet.</p>}
+        {chip === 'fuel' && !(help?.fuel || []).length && <p className="map-note">No fuel stations saved near you yet. Connect to the internet once to download them.</p>}
       </div>
 
       <BottomNav route="/map" />

@@ -42,7 +42,7 @@ const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 
 async function overpass(query) {
   let lastErr;
-  // Try every server in turn; give each at most 90 seconds, so nothing hangs silently.
+  // Try every server in turn; give each at most 90 seconds (4 minutes for a whole state), so nothing hangs silently.
   for (let attempt = 0; attempt < MIRRORS.length * 2; attempt++) {
     const url = MIRRORS[attempt % MIRRORS.length];
     const host = new URL(url).hostname;
@@ -52,7 +52,7 @@ async function overpass(query) {
         method: 'POST',
         body: 'data=' + encodeURIComponent(query),
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        signal: AbortSignal.timeout(90000),
+        signal: AbortSignal.timeout(query.includes('area[') ? 240000 : 90000), // whole states need longer than city boxes
       });
       if (res.ok) return (await res.json()).elements || [];
       lastErr = new Error(`Overpass error ${res.status}`);
@@ -107,6 +107,17 @@ function dedupe(rows) {
   });
 }
 
+// Keeps one point per highway per ~3 km square, so a long highway becomes a sensible number of rows.
+function thin(rows, cell = 0.03) {
+  const seen = new Set();
+  return rows.filter((r) => {
+    const key = `${r.highway_ref}|${Math.round(r.lat / cell)}|${Math.round(r.lng / cell)}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const names = args.includes('--all') ? Object.keys(STATES) : args.map((a) => a.toLowerCase());
@@ -121,7 +132,7 @@ async function main() {
     process.exit(1);
   }
 
-  let hospitals = [], police = [], highways = [];
+  let hospitals = [], police = [], highways = [], fuel = [];
   const failed = [];
   for (const name of names) {
     const iso = regionOf(name);
@@ -135,11 +146,28 @@ async function main() {
       console.log(`[${name}] highway points...`);
       highways.push(
         ...toRows(
-          await overpass(areaQuery(iso, ['["barrier"="toll_booth"]', '["highway"="emergency_access_point"]', '["emergency"="phone"]'])),
+          await overpass(
+            areaQuery(iso, [
+              '["barrier"="toll_booth"]',
+              '["highway"="emergency_access_point"]',
+              '["emergency"="phone"]',
+              // the national and state highways themselves (one point per road segment)
+              '["highway"~"^(motorway|trunk|primary)$"]["ref"~"^(NH|SH)"]',
+            ])
+          ),
           'Highway help point', '1033',
-          (t) => ({ highway_ref: String(t.ref || t.highway_ref || 'NH').split(';')[0].trim() || 'NH' })
+          (t) => {
+            const ref = String(t.ref || t.highway_ref || '').split(';')[0].trim();
+            const isRoad = /^(motorway|trunk|primary)$/.test(t.highway || '');
+            const row = { highway_ref: ref || 'NH' };
+            if (isRoad) row.name = `${ref || 'Highway'}${t.name ? ' - ' + t.name : ''}`; // e.g. "NH 44 - GT Road"
+            return row;
+          }
         )
       );
+      await sleep(2000);
+      console.log(`[${name}] fuel stations...`);
+      fuel.push(...toRows(await overpass(areaQuery(iso, ['["amenity"="fuel"]'])), 'Fuel station', ''));
       await sleep(2000);
     } catch (e) {
       console.error(`[${name}] FAILED: ${e.message}  (run it again later for this state)`);
@@ -149,7 +177,8 @@ async function main() {
 
   hospitals = dedupe(hospitals);
   police = dedupe(police);
-  highways = dedupe(highways);
+  highways = thin(dedupe(highways));
+  fuel = dedupe(fuel);
   if (!hospitals.length && !police.length) {
     console.error('Nothing downloaded, so the existing data files were NOT changed.');
     process.exit(1);
@@ -160,9 +189,10 @@ async function main() {
   write('hospitals.json', hospitals);
   write('police.json', police);
   write('highways.json', highways);
+  write('fuel.json', fuel);
   write('patrol_units.json', police); // nearest patrol unit = nearest real police station
 
-  console.log(`\nSaved: hospitals=${hospitals.length}, police=${police.length}, highway points=${highways.length}, patrol units=${police.length}`);
+  console.log(`\nSaved: hospitals=${hospitals.length}, police=${police.length}, highway points=${highways.length}, fuel stations=${fuel.length}, patrol units=${police.length}`);
   if (failed.length) console.log('Failed states (re-run for these):', failed.join(', '));
   console.log('Now run: node db/seed.js');
 }

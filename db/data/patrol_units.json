@@ -1,110 +1,176 @@
 [
  {
-  "name": "Police Station, Sector 39",
+  "name": "Police Station Sahnewal",
   "phone": "112",
-  "lat": 30.745196,
-  "lng": 76.726411
+  "lat": 30.835254,
+  "lng": 75.974529
  },
  {
-  "name": "Police Station Palsora",
+  "name": "Police station Shimla puri",
   "phone": "112",
-  "lat": 30.73944,
-  "lng": 76.716206
+  "lat": 30.888759,
+  "lng": 75.861466
  },
  {
-  "name": "Police Station phase 8",
-  "phone": "0172-5044672",
-  "lat": 30.694261,
-  "lng": 76.727973
+  "name": "Commissioner Of Police,  Residence",
+  "phone": "112",
+  "lat": 30.915565,
+  "lng": 75.83847
  },
  {
-  "name": "Police Station Sector 14",
+  "name": "Police station",
   "phone": "112",
-  "lat": 30.680162,
-  "lng": 76.847905
+  "lat": 30.888285,
+  "lng": 75.804635
  },
  {
-  "name": "Government Railway Police Station",
+  "name": "Division No. 6",
   "phone": "112",
-  "lat": 30.703522,
-  "lng": 76.819416
+  "lat": 30.893979,
+  "lng": 75.871357
+ },
+ {
+  "name": "DSP Industrial Area",
+  "phone": "112",
+  "lat": 30.885582,
+  "lng": 75.88727
+ },
+ {
+  "name": "Police Post Sherpur",
+  "phone": "112",
+  "lat": 30.885398,
+  "lng": 75.887476
+ },
+ {
+  "name": "Model Town",
+  "phone": "112",
+  "lat": 30.888444,
+  "lng": 75.840396
+ },
+ {
+  "name": "PS Jodha",
+  "phone": "112",
+  "lat": 30.793637,
+  "lng": 75.750056
+ },
+ {
+  "name": "Div No. 1",
+  "phone": "112",
+  "lat": 30.916791,
+  "lng": 75.850855
+ },
+ {
+  "name": "Police Chownki Merado Thana Sadar",
+  "phone": "112",
+  "lat": 30.863423,
+  "lng": 75.85222
+ },
+ {
+  "name": "police station",
+  "phone": "112",
+  "lat": 30.872448,
+  "lng": 75.840306
+ },
+ {
+  "name": "Police station",
+  "phone": "112",
+  "lat": 30.866248,
+  "lng": 75.870081
+ },
+ {
+  "name": "Police Station DABA(URBAN)",
+  "phone": "112",
+  "lat": 30.867318,
+  "lng": 75.885933
  },
  {
   "name": "Police Station",
   "phone": "112",
-  "lat": 30.700846,
-  "lng": 76.778901
+  "lat": 30.846113,
+  "lng": 75.67496
  },
  {
   "name": "Police station",
   "phone": "112",
-  "lat": 30.712102,
-  "lng": 76.796364
+  "lat": 30.868361,
+  "lng": 75.978871
+ },
+ {
+  "name": "CPSC, Sub Division Gill",
+  "phone": "112",
+  "lat": 30.914536,
+  "lng": 75.842864
+ },
+ {
+  "name": "Police Station sdar, Ludhiana City",
+  "phone": "112",
+  "lat": 30.914269,
+  "lng": 75.843609
+ },
+ {
+  "name": "Police Post Atam Nagar",
+  "phone": "112",
+  "lat": 30.889206,
+  "lng": 75.850103
+ },
+ {
+  "name": "ACP AtamNagar",
+  "phone": "112",
+  "lat": 30.889119,
+  "lng": 75.849835
+ },
+ {
+  "name": "Poloce Station Miller Ganj",
+  "phone": "100",
+  "lat": 30.90018,
+  "lng": 75.858428
  },
  {
   "name": "Police station",
   "phone": "112",
-  "lat": 30.738902,
-  "lng": 76.778584
+  "lat": 30.903669,
+  "lng": 75.901945
  },
  {
-  "name": "Police Post Sector 25",
-  "phone": "+91-172-2550514",
-  "lat": 30.673172,
-  "lng": 76.880409
- },
- {
-  "name": "Sector 7 Police station",
+  "name": "Police Station",
   "phone": "112",
-  "lat": 30.710408,
-  "lng": 76.845414
+  "lat": 30.8883,
+  "lng": 75.804635
  },
  {
-  "name": "Police Station South",
+  "name": "Police Station Sadar, Ludhiana City",
   "phone": "112",
-  "lat": 30.720061,
-  "lng": 76.764276
+  "lat": 30.914347,
+  "lng": 75.843608
  },
  {
-  "name": "Crime Branch",
-  "phone": "+91 172 2550013",
-  "lat": 30.657805,
-  "lng": 76.885901
- },
- {
-  "name": "Women Police Station",
+  "name": "CPSC GILL, LUDHIANA CITY",
   "phone": "112",
-  "lat": 30.693742,
-  "lng": 76.852167
+  "lat": 30.914537,
+  "lng": 75.84289
  },
  {
-  "name": "Police Station Chandimandir",
+  "name": "DIG Ludhiana Range, OFFICE",
   "phone": "112",
-  "lat": 30.691346,
-  "lng": 76.883743
+  "lat": 30.917056,
+  "lng": 75.843448
  },
  {
-  "name": "Haryana Emergency 112 Helpline Center",
+  "name": "Police Station Division No. 5",
   "phone": "112",
-  "lat": 30.693755,
-  "lng": 76.870823
+  "lat": 30.907538,
+  "lng": 75.847199
  },
  {
-  "name": "Police Post Sector 21",
+  "name": "Police Station Outreach Centre Div. No. 5",
   "phone": "112",
-  "lat": 30.676549,
-  "lng": 76.863479
+  "lat": 30.907342,
+  "lng": 75.847122
  },
  {
-  "name": "Police Station Sector 1",
+  "name": "Meharban Police Station",
   "phone": "112",
-  "lat": 30.700883,
-  "lng": 76.868268
- },
- {
-  "name": "Sector 3 Police Station",
-  "phone": "112",
-  "lat": 30.756808,
-  "lng": 76.796995
+  "lat": 30.951925,
+  "lng": 75.90145
  }
 ]

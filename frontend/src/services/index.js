@@ -134,7 +134,7 @@ async function flushPendingTripEnd() {
 
 /* ---------- nearest help (works fully offline) ---------- */
 
-const TYPES = ['hospital', 'police', 'highway', 'patrol'];
+const TYPES = ['hospital', 'police', 'highway', 'fuel', 'patrol'];
 
 // Reads GPS and the cached places, then returns the nearest of each kind.
 // {
@@ -159,6 +159,7 @@ export async function getNearestHelp({ limitPerType = 3 } = {}) {
     hospital: [],
     police: [],
     highway: [],
+    fuel: [],
     patrol: [],
   };
 
