@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { ChevronDown, CalendarIcon, SortIcon } from '../components/Icons.jsx';
 import ResolveButton from '../components/ResolveButton.jsx';
-import { clockTime, dateKey, formatLatLng, typeLabel } from '../services/format.js';
+import { clockTime, dateKey, formatLatLng, mapsUrl, triggerLabel, typeLabel } from '../services/format.js';
 
 function Thumb({ type }) {
   return (
@@ -93,7 +93,14 @@ export default function Alerts({ data }) {
               <td>
                 <div className="loc-cell">
                   <Thumb type={a.type} />
-                  <span className="muted small">{a.address || formatLatLng(a.lat, a.lng)}</span>
+                  <span className="muted small">
+                    <strong>{a.name}</strong> · {triggerLabel(a.type)}
+                    <br />
+                    {a.address || formatLatLng(a.lat, a.lng)}
+                    {mapsUrl(a.lat, a.lng) && (
+                      <> · <a href={mapsUrl(a.lat, a.lng)} target="_blank" rel="noreferrer">Map</a></>
+                    )}
+                  </span>
                 </div>
               </td>
               <td>{clockTime(a.time)}</td>

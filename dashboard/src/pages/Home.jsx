@@ -3,7 +3,7 @@ import StatCards from '../components/StatCards.jsx';
 import AlertMap from '../components/AlertMap.jsx';
 import AlertList from '../components/AlertList.jsx';
 import ResolveButton from '../components/ResolveButton.jsx';
-import { clockTime } from '../services/format.js';
+import { clockTime, formatLatLng, mapsUrl, triggerLabel } from '../services/format.js';
 
 export default function Home({ data, onViewAll }) {
   const { openAlerts, resolvedAlerts, units, resolvedToday, refresh } = data;
@@ -24,8 +24,15 @@ export default function Home({ data, onViewAll }) {
                 <span className="muted"> · {selected.phone}</span>
               </div>
               <div className="muted">
-                Emergency contact: {selected.emergencyContact} · Last seen {clockTime(selected.lastSeen)} · Source: {selected.source}
+                {triggerLabel(selected.type)} · Last seen {clockTime(selected.lastSeen)}
               </div>
+              <div className="muted">
+                Location: {selected.address || formatLatLng(selected.lat, selected.lng)}
+                {mapsUrl(selected.lat, selected.lng) && (
+                  <> · <a href={mapsUrl(selected.lat, selected.lng)} target="_blank" rel="noreferrer">Open in Google Maps</a></>
+                )}
+              </div>
+              <div className="muted">Emergency contact: {selected.emergencyContact}</div>
               <ResolveButton id={selected.id} onDone={refresh} className="btn-solid" />
             </div>
           )}

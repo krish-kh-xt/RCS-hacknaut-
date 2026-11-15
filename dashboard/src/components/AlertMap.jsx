@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
 import L from 'leaflet';
-import { formatLatLng } from '../services/format.js';
+import { formatLatLng, mapsUrl, triggerLabel } from '../services/format.js';
 
 const DEFAULT_CENTER = [30.9, 75.85]; // Ludhiana
 // Optional: a dark tile URL that needs a key, e.g. MapTiler or CARTO with a key.
@@ -27,6 +27,18 @@ function FitToData({ points }) {
   return null;
 }
 
+// When an alert is picked in the list, move the map to it.
+function FlyToSelected({ alert }) {
+  const map = useMap();
+  useEffect(() => {
+    if (alert && alert.lat != null && alert.lng != null) {
+      map.flyTo([alert.lat, alert.lng], Math.max(map.getZoom(), 14), { duration: 0.6 });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [alert?.id]);
+  return null;
+}
+
 export default function AlertMap({ alerts, units, selectedId, onSelect }) {
   const alertPts = alerts.filter((a) => a.lat != null && a.lng != null);
   const unitPts = units.filter((u) => u.lat != null && u.lng != null);
@@ -43,6 +55,7 @@ export default function AlertMap({ alerts, units, selectedId, onSelect }) {
           noWrap
         />
         <FitToData points={all} />
+        <FlyToSelected alert={alertPts.find((a) => a.id === selectedId)} />
         {unitPts.map((u) => (
           <Marker key={`u-${u.id}`} position={[u.lat, u.lng]} icon={pin('unit')}>
             <Popup>{u.name}</Popup>
@@ -58,7 +71,12 @@ export default function AlertMap({ alerts, units, selectedId, onSelect }) {
             <Popup>
               <div className="map-popup">
                 <strong>{a.type === 'silence' ? 'Silence Alert' : 'SOS Alert'}</strong>
+                <span>{a.name}{a.phone && a.phone !== '—' ? ` · ${a.phone}` : ''}</span>
+                <span>{triggerLabel(a.type)}</span>
                 <span>{formatLatLng(a.lat, a.lng)}</span>
+                {mapsUrl(a.lat, a.lng) && (
+                  <a href={mapsUrl(a.lat, a.lng)} target="_blank" rel="noreferrer">Open in Google Maps</a>
+                )}
               </div>
             </Popup>
           </Marker>

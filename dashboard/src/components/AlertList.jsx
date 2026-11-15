@@ -1,4 +1,4 @@
-import { timeAgo } from '../services/format.js';
+import { timeAgo, formatLatLng } from '../services/format.js';
 
 const DOT = { sos: 'red', silence: 'yellow', resolved: 'green' };
 
@@ -32,7 +32,8 @@ export default function AlertList({ open, resolved, selectedId, onSelect, onView
                   <span className={`ri-title ${DOT[a.kind]}`}>{title}</span>
                   <span className="ri-time">{timeAgo(a.time)}</span>
                 </div>
-                <div className="ri-loc">{a.address || a.name}</div>
+                <div className="ri-loc"><strong>{a.name}</strong></div>
+                <div className="ri-loc">{a.address || formatLatLng(a.lat, a.lng)}</div>
                 {a.kind !== 'resolved' && (
                   <span className={`tag ${a.kind === 'silence' ? 'tag-yellow' : 'tag-red'}`}>
                     {a.status === 'pending' ? (a.kind === 'silence' ? 'SILENCED' : 'PENDING') : a.status}

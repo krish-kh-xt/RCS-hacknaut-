@@ -36,15 +36,22 @@ function normStatus(s = '') {
 }
 
 function normAlerts(list) {
-  return (Array.isArray(list) ? list : []).map((a, i) => ({
-    id: a.id ?? a._id ?? i,
-    type: normType(a.type ?? a.alertType ?? a.kind),
-    lat: a.lat ?? a.latitude ?? a.location?.lat ?? null,
-    lng: a.lng ?? a.lon ?? a.longitude ?? a.location?.lng ?? null,
-    location: typeof a.location === 'string' ? a.location : a.locationName ?? a.address ?? 'Location shared',
-    time: a.createdAt ?? a.time ?? a.timestamp ?? Date.now(),
-    status: normStatus(a.status),
-  }));
+  return (Array.isArray(list) ? list : []).map((a, i) => {
+    // Backend alerts use lastLat / lastLng and `source` (SOS or SILENCE), see docs/api.md.
+    const num = (v) => (v != null && v !== '' && Number.isFinite(Number(v)) ? Number(v) : null);
+    const lat = num(a.lastLat ?? a.last_lat ?? a.lat ?? a.latitude ?? a.location?.lat);
+    const lng = num(a.lastLng ?? a.last_lng ?? a.lng ?? a.lon ?? a.longitude ?? a.location?.lng);
+    const place = typeof a.location === 'string' ? a.location : a.locationName ?? a.address ?? null;
+    return {
+      id: a.id ?? a._id ?? i,
+      type: normType(a.type ?? a.alertType ?? a.kind ?? a.source),
+      lat,
+      lng,
+      location: place ?? (lat != null && lng != null ? `Lat ${lat.toFixed(4)}, Lng ${lng.toFixed(4)}` : 'Location unknown'),
+      time: a.createdAt ?? a.time ?? a.timestamp ?? Date.now(),
+      status: normStatus(a.status),
+    };
+  });
 }
 function normPatrols(list) {
   return (Array.isArray(list) ? list : []).map((p, i) => ({

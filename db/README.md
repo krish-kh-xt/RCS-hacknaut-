@@ -27,3 +27,10 @@ DATABASE_URL (read from backend/.env)
 - Phone numbers: 108 (ambulance), 112 (police) and 1033 (highway helpline) are national numbers used as fallbacks. Patrol unit numbers are fake.
 - `highway_ref` values (NH-205, SH-22) are placeholders: check them before the final demo.
 - Coordinates: PostGIS `ST_MakePoint(lng, lat)` takes longitude first.
+
+## Troubleshooting: dashboard shows 500 / new SOS alerts do not appear
+```
+node db/check.js          # checks the connection, tables, columns and the exact dashboard queries
+node db/check.js --fix    # also adds columns that an older database is missing (never deletes anything)
+```
+It prints OK / FAIL lines and what to do. It also lists the newest alerts in the database, so you can see whether an SOS arrived.

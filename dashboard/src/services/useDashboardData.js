@@ -18,7 +18,13 @@ export default function useDashboardData() {
     if (open.status === 'fulfilled') setOpenAlerts(open.value);
     if (resolved.status === 'fulfilled') setResolvedAlerts(resolved.value);
     if (u.status === 'fulfilled') setUnits(u.value);
-    setError(open.status === 'rejected' ? 'Cannot reach backend' : null);
+    if (open.status === 'rejected') {
+      const msg = String(open.reason?.message || '');
+      // "500: ..." means the backend answered with an error; anything else means no answer at all.
+      setError(/^\d{3}/.test(msg) ? `Backend error ${msg}` : 'Cannot reach backend');
+    } else {
+      setError(null);
+    }
   }, []);
 
   useEffect(() => {

@@ -22,7 +22,14 @@ function errorHandler(err, req, res, next) {
   }
   const status = err.status || 500;
   if (status >= 500) console.error('[error]', err);
-  res.status(status).json({ error: status >= 500 ? 'server error' : err.message });
+  if (status >= 500) {
+    // DEMO_MODE=true (local testing): add the real cause so the browser's Network tab and the
+    // dashboard banner show it. Without it (production) only the short message is sent.
+    const body = { error: 'server error' };
+    if (process.env.DEMO_MODE === 'true') body.detail = err.message;
+    return res.status(status).json(body);
+  }
+  res.status(status).json({ error: err.message });
 }
 
 module.exports = { HttpError, asyncHandler, notFound, errorHandler };
